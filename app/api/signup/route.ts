@@ -1,4 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_ANON_KEY!
+)
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,32 +19,16 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, error: 'Invalid email format' }, { status: 400 })
     }
 
-    if (!process.env.POSTGRES_URL) {
-      console.log('Signup (dev mode):', { email, company })
-      return NextResponse.json({ success: true })
-    }
+    const { error } = await supabase
+      .from('signups')
+      .insert([{ email, company }])
 
-    const { sql } = await import('@vercel/postgres')
-
-    await sql`
-      CREATE TABLE IF NOT EXISTS signups (
-        id SERIAL PRIMARY KEY,
-        email VARCHAR(255) UNIQUE NOT NULL,
-        company VARCHAR(255) NOT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-      )
-    `
-
-    try {
-      await sql`
-        INSERT INTO signups (email, company)
-        VALUES (${email}, ${company})
-      `
-    } catch (dbError: unknown) {
-      if (dbError && typeof dbError === 'object' && 'code' in dbError && (dbError as { code: string }).code === '23505') {
+    if (error) {
+      if (error.code === '23505') {
         return NextResponse.json({ success: false, error: 'Email already registered' }, { status: 409 })
       }
-      throw dbError
+      console.error('Supabase error:', error)
+      return NextResponse.json({ success: false, error: 'Failed to save signup' }, { status: 500 })
     }
 
     return NextResponse.json({ success: true })
