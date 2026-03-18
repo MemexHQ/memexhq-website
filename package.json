@@ -1,0 +1,13 @@
+{
+  "name": "memexhq",
+  "version": "1.0.0",
+  "description": "MemexHQ Landing Page",
+  "scripts": {
+    "dev": "npx serve public -l 3000",
+    "build": "echo 'Static site ready in public/'",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}

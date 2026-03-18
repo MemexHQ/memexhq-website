@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MemexHQ — Your AI finally knows your business.</title>
+<meta name="description" content="Every meeting, commit, sales call, and decision — unified into a single context layer that makes every AI agent in your stack dramatically smarter." />
+<link rel="icon" type="image/svg+xml" href="/components/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,200;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles/main.css" />
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="30" width="32" height="2.5" rx="1.25" fill="currentColor"/>
+        <rect x="4" y="12" width="11" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="6.5" y="15" width="6" height="1.2" rx="0.6" fill="currentColor" opacity="0.4"/>
+        <rect x="6.5" y="17.5" width="4" height="1.2" rx="0.6" fill="currentColor" opacity="0.25"/>
+        <rect x="25" y="12" width="11" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="27.5" y="15" width="6" height="1.2" rx="0.6" fill="currentColor" opacity="0.4"/>
+        <rect x="27.5" y="17.5" width="3.5" height="1.2" rx="0.6" fill="currentColor" opacity="0.25"/>
+        <line x1="15" y1="19" x2="25" y2="19" stroke="currentColor" stroke-width="1.2" stroke-dasharray="1.5 2" opacity="0.6"/>
+        <circle cx="20" cy="19" r="2.2" fill="currentColor"/>
+        <circle cx="20" cy="19" r="0.9" fill="var(--bg)"/>
+        <line x1="9.5" y1="26" x2="9.5" y2="30" stroke="currentColor" stroke-width="1.2" opacity="0.5"/>
+        <line x1="30.5" y1="26" x2="30.5" y2="30" stroke="currentColor" stroke-width="1.2" opacity="0.5"/>
+        <circle cx="20" cy="6.5" r="3" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.5"/>
+        <circle cx="20" cy="6.5" r="1" fill="currentColor" opacity="0.5"/>
+      </svg>
+    </div>
+    MemexHQ
+  </a>
+  <ul class="nav-links">
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#integrations">Integrations</a></li>
+    <li><a href="#demo">Demo</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme">☀️</button>
+    <a href="#signup" class="nav-cta">Get Access</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-badge">
+    <span class="dot"></span>
+    Now in private beta · 340+ teams waiting
+  </div>
+  <h1>
+    Your AI<br/>
+    <em>finally knows</em><br/>
+    <span>your business.</span>
+  </h1>
+  <p class="hero-sub">
+    Every meeting, commit, sales call, and decision — unified into a single context layer that makes every AI agent in your stack dramatically smarter. Instantly. Locally. Privately.
+  </p>
+  <div class="hero-actions">
+    <a href="#signup" class="btn-primary">Request Early Access</a>
+    <a href="#demo" class="btn-ghost">See it in action</a>
+  </div>
+  <div class="hero-integrations">
+    <div class="hi-label">Works with your entire stack</div>
+    <div class="hi-logos">
+      <span class="hi-logo">Claude Code</span>
+      <span class="hi-logo">GitHub</span>
+      <span class="hi-logo">Slack</span>
+      <span class="hi-logo">Jira</span>
+      <span class="hi-logo">Notion</span>
+      <span class="hi-logo">Zoom</span>
+      <span class="hi-logo">Salesforce</span>
+      <span class="hi-logo">Linear</span>
+      <span class="hi-logo">+ 35 more</span>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    scroll
+  </div>
+</section>
+
+<!-- ══ TICKER ══ -->
+<div class="problem-strip">
+  <div class="ticker">
+    <div class="ticker-item"><span>✗</span> Claude Code just suggested the same Redis architecture we reverted three weeks ago</div>
+    <div class="ticker-item">·</div>
+    <div class="ticker-item"><span>✗</span> ChatGPT wrote a campaign for a feature our biggest client hates</div>
+    <div class="ticker-item">·</div>
+    <div class="ticker-item"><span>✗</span> Copilot has no idea we deprecated that module last month</div>
+    <div class="ticker-item">·</div>
+    <div class="ticker-item"><span>✗</span> Every new AI tool needs a full company briefing from scratch</div>
+    <div class="ticker-item">·</div>
+    <div class="ticker-item"><span>✗</span> The AI doesn't know we already tried that. Again.</div>
+    <div class="ticker-item">·</div>
+    <div class="ticker-item"><span>✗</span> I spent 20 minutes explaining our stack to an AI that forgot it next session</div>
+    <div class="ticker-item">·</div>
+    <div class="ticker-item"><span>✗</span> Claude Code just suggested the same Redis architecture we reverted three weeks ago</div>
+    <div class="ticker-item">·</div>
+    <div class="ticker-item"><span>✗</span> ChatGPT wrote a campaign for a feature our biggest client hates</div>
+    <div class="ticker-item">·</div>
+    <div class="ticker-item"><span>✗</span> Copilot has no idea we deprecated that module last month</div>
+    <div class="ticker-item">·</div>
+    <div class="ticker-item"><span>✗</span> Every new AI tool needs a full company briefing from scratch</div>
+    <div class="ticker-item">·</div>
+    <div class="ticker-item"><span>✗</span> The AI doesn't know we already tried that. Again.</div>
+    <div class="ticker-item">·</div>
+    <div class="ticker-item"><span>✗</span> I spent 20 minutes explaining our stack to an AI that forgot it next session</div>
+    <div class="ticker-item">·</div>
+  </div>
+</div>
+
+<!-- ══ PROBLEM ══ -->
+<section class="problem-section">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">The problem</div>
+      <h2 class="section-h">AI is only as smart as<br/>the <em>context</em> you give it.</h2>
+      <p class="section-p">You're paying for Claude Code, Copilot, ChatGPT, Gemini. But every session starts from zero. No knowledge of your architecture. No memory of what failed last sprint. No idea what your biggest client asked for on Tuesday's call.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-cards">
+        <div class="problem-card"><div class="pc-icon">⚠️</div><div class="pc-body"><h5>Zero institutional memory</h5><p>Every AI session starts blank. Past decisions, failed experiments, and hard-won knowledge are invisible to the tools your team relies on daily.</p></div></div>
+        <div class="problem-card"><div class="pc-icon">🔄</div><div class="pc-body"><h5>Constant re-explanation</h5><p>Engineers spend 20+ minutes per session re-briefing AI tools on stack, conventions, and context that should already be known.</p></div></div>
+        <div class="problem-card"><div class="pc-icon">💸</div><div class="pc-body"><h5>Expensive mistakes</h5><p>AI confidently suggests approaches your team already tried and abandoned. Without context, it can't know — and your team pays the cost.</p></div></div>
+        <div class="problem-card"><div class="pc-icon">🧩</div><div class="pc-body"><h5>Siloed knowledge</h5><p>Sales knows what clients want. Engineering knows what's possible. Product knows what's planned. Your AI knows none of it.</p></div></div>
+      </div>
+      <div class="problem-right">
+        <div class="pr-title">// What your team is saying</div>
+        <div class="pr-quote">"Claude Code just suggested the same Redis rate limiter we reverted three weeks ago after the latency spike."</div>
+        <div class="pr-quote">"ChatGPT wrote an enterprise pitch that led with the exact feature our biggest client explicitly said they don't want."</div>
+        <div class="pr-quote">"I spent 20 minutes explaining our microservices architecture to Copilot. It forgot everything next session."</div>
+        <div class="pr-quote">"Our AI has no idea we're mid-pivot. It's still generating content for the old product direction."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section id="how">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">How it works</div>
+      <h2 class="section-h">One context layer.<br/><em>Every</em> AI agent.</h2>
+      <p class="section-p">MemexHQ runs a lightweight context server on your local network. Nodes connect to your tools, distil what matters, and store it in a distributed vector database. Every AI query gets enriched automatically — no prompting required.</p>
+    </div>
+    <div class="how-grid">
+      <div class="steps">
+        <div class="step"><div class="step-num">01</div><div class="step-body"><h4>Nodes collect context silently</h4><p>Local agents attach to every tool your team uses. They listen, summarise, tag, and timestamp meaningful signals — architecture decisions, client objections, sprint priorities, code patterns, and team agreements.</p></div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-body"><h4>Stored locally in a distributed vector DB</h4><p>Summaries are embedded and stored in your private vector database — entirely on your network. Semantic search retrieves the right context for any query, not keyword matching, actual meaning.</p></div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-body"><h4>Every AI query is enriched automatically</h4><p>When anyone queries Claude Code, ChatGPT, or Gemini, MemexHQ intercepts the query, retrieves the top-k relevant context, and prepends it. The AI receives a fully briefed prompt. No extra work from your team.</p></div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-body"><h4>Collective memory compounds over time</h4><p>Every AI session output feeds back into the context store. MemexHQ gets smarter about your business with every interaction. The longer you run it, the more institutional knowledge it captures.</p></div></div>
+      </div>
+      <div class="arch-diagram">
+        <div class="arch-label">// System architecture</div>
+        <div class="arch-nodes">
+          <div class="arch-node"><span class="n-icon">⌥</span>GitHub</div>
+          <div class="arch-node"><span class="n-icon">◈</span>Jira</div>
+          <div class="arch-node"><span class="n-icon">◎</span>GMeet</div>
+          <div class="arch-node"><span class="n-icon">⬡</span>Claude Code</div>
+          <div class="arch-node"><span class="n-icon">◆</span>Salesforce</div>
+          <div class="arch-node"><span class="n-icon">✦</span>Slack</div>
+          <div class="arch-node"><span class="n-icon">▣</span>Notion</div>
+          <div class="arch-node"><span class="n-icon">◉</span>Zoom</div>
+          <div class="arch-node"><span class="n-icon">⊕</span>Linear</div>
+        </div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-server">
+          <strong>MemexHQ Context Server</strong>
+          Distributed Vector DB · RAG · Local Network Only
+        </div>
+        <div class="arch-arrow2">↓</div>
+        <div class="arch-query">
+          <div class="q-label">Enriched query →</div>
+          <div>"Build auth module" + full business context injected</div>
+          <div class="q-ai">
+            <span class="q-tag">Claude Code</span>
+            <span class="q-tag">ChatGPT</span>
+            <span class="q-tag">Gemini</span>
+            <span class="q-tag">Copilot</span>
+            <span class="q-tag">Any LLM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DEMO ══ -->
+<section id="demo" class="demo-section">
+  <div class="demo-inner">
+    <div class="demo-header">
+      <div>
+        <div class="section-label reveal">Live examples</div>
+        <h2 class="section-h reveal">Context in action</h2>
+      </div>
+      <div class="demo-tabs">
+        <button class="demo-tab active" data-tab="engineering">Engineering</button>
+        <button class="demo-tab" data-tab="marketing">Marketing</button>
+        <button class="demo-tab" data-tab="sales">Sales</button>
+        <button class="demo-tab" data-tab="product">Product</button>
+        <button class="demo-tab" data-tab="devops">DevOps</button>
+        <button class="demo-tab" data-tab="onboarding">HR / Onboarding</button>
+      </div>
+    </div>
+    <div class="terminal-wrap">
+      <div class="terminal-bar">
+        <span class="t-dot r"></span><span class="t-dot y"></span><span class="t-dot g"></span>
+        <span class="t-title">memexhq · context enrichment · live</span>
+      </div>
+      <div class="terminal-body">
+
+        <div class="demo-pane active" id="tab-engineering">
+          <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">claude-code "implement rate limiting for the /auth endpoint"</span></div>
+          <div class="t-block ctx">
+            <div class="t-tag ctx">// context retrieved — 4 nodes matched</div>
+            <p><strong>[GitHub · 3d ago]</strong> PR #412 reverted Redis-based rate limiter — latency spike under 500 rps. Root cause: connection pool misconfigured.<br/>
+            <strong>[Jira · SPRINT-88]</strong> Auth hardening is P0 this sprint. Requirement: 100 req/min per user, sliding window.<br/>
+            <strong>[Standup · Tue]</strong> Team agreed token bucket over leaky bucket after benchmarking.<br/>
+            <strong>[Claude Code · 7d ago]</strong> Existing middleware pattern in <code>src/middleware/throttle.ts</code>.</p>
+          </div>
+          <div class="t-block rag">
+            <div class="t-tag rag">// enriched prompt sent to claude-code</div>
+            <p>"Implement rate limiting for /auth. Use token bucket (100 req/min/user, sliding window). Avoid Redis connection pool — prefer in-memory with periodic flush. Extend existing pattern at <code>src/middleware/throttle.ts</code>. Previous attempt PR #412 failed due to pool config."</p>
+          </div>
+          <div class="t-block out">
+            <div class="t-tag out">// result</div>
+            <p>Production-ready implementation on first attempt. No back-and-forth, no rediscovering past failures. The AI knew what failed and why.</p>
+          </div>
+        </div>
+
+        <div class="demo-pane" id="tab-marketing">
+          <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">chatgpt "write a LinkedIn post announcing our enterprise tier"</span></div>
+          <div class="t-block ctx">
+            <div class="t-tag ctx">// context retrieved — 5 nodes matched</div>
+            <p><strong>[Salesforce · Stripe call · 2d ago]</strong> Main objection: SSO and audit logs missing. Enterprise tier resolves this.<br/>
+            <strong>[PRD · v2.4]</strong> Enterprise includes SAML SSO, RBAC, 90-day audit log, SLA 99.9%.<br/>
+            <strong>[Slack · #marketing]</strong> Positioning agreed: lead with security and compliance, not feature count.<br/>
+            <strong>[Gong · Notion call]</strong> Competing against Glean — differentiate on local-only deployment.</p>
+          </div>
+          <div class="t-block rag">
+            <div class="t-tag rag">// enriched prompt sent to chatgpt</div>
+            <p>"Announce enterprise tier on LinkedIn. Lead with security: SAML SSO, audit logs, local deployment. Target CTOs/security teams. Differentiator vs Glean: zero cloud egress. Tone: confident, technical, not salesy. Agreed positioning: compliance first."</p>
+          </div>
+          <div class="t-block out">
+            <div class="t-tag out">// result</div>
+            <p>Post hits exact positioning with real product detail. No hallucinated features, no generic copy. Drafted in one shot.</p>
+          </div>
+        </div>
+
+        <div class="demo-pane" id="tab-sales">
+          <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">chatgpt "prep me for tomorrow's call with Acme Corp"</span></div>
+          <div class="t-block ctx">
+            <div class="t-tag ctx">// context retrieved — 6 nodes matched</div>
+            <p><strong>[Salesforce · 3w ago]</strong> Champion: VP Eng. Budget approved. Blocker: legal wants data residency guarantee.<br/>
+            <strong>[Gmail thread]</strong> DPA sent 10 days ago — no reply, follow up critical.<br/>
+            <strong>[Jira · SALES-44]</strong> Custom SLA doc in progress, ETA this Friday.<br/>
+            <strong>[Slack · #deals]</strong> Glean pitched them last week. They liked our local-only story.</p>
+          </div>
+          <div class="t-block rag">
+            <div class="t-tag rag">// enriched prompt sent to chatgpt</div>
+            <p>"Prep Acme Corp call. Primary blocker: DPA / data residency — follow up on unanswered email. SLA doc ready this week, mention ETA. Champion: VP Eng with budget approved. Lead with local-only deployment story to counter Glean. Ask about legal team timeline."</p>
+          </div>
+          <div class="t-block out">
+            <div class="t-tag out">// result</div>
+            <p>Sharp, context-loaded call brief assembled from Slack, Gmail, Jira, and Salesforce automatically. 30-second read instead of 45 minutes of manual research.</p>
+          </div>
+        </div>
+
+        <div class="demo-pane" id="tab-product">
+          <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">chatgpt "write the PRD for the notification system"</span></div>
+          <div class="t-block ctx">
+            <div class="t-tag ctx">// context retrieved — 5 nodes matched</div>
+            <p><strong>[Gong · Stripe call]</strong> Client explicitly requested webhook support for notification events.<br/>
+            <strong>[Linear · ENG-203]</strong> Real-time push out of scope Q3 due to infrastructure cost.<br/>
+            <strong>[Gong · 3 recent calls]</strong> Competitor X shipped push notifications — mentioned as gap by multiple prospects.<br/>
+            <strong>[Confluence · March]</strong> Previous RFC for notification system abandoned — infra cost estimate too high.</p>
+          </div>
+          <div class="t-block rag">
+            <div class="t-tag rag">// enriched prompt</div>
+            <p>"PRD: notification system. Must-have: webhooks (client requirement, Stripe call). Out of scope Q3: real-time push (ENG-203). Competitive gap: push notifications — 3 recent sales mentions. Previous RFC failed on infra cost — avoid similar scope."</p>
+          </div>
+          <div class="t-block out">
+            <div class="t-tag out">// result</div>
+            <p>PRD with full business, technical, and competitive context. No assumptions. No rediscovering past decisions. First draft is already aligned with engineering, sales, and clients.</p>
+          </div>
+        </div>
+
+        <div class="demo-pane" id="tab-devops">
+          <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">chatgpt "why did production go down at 23:14 last night?"</span></div>
+          <div class="t-block ctx">
+            <div class="t-tag ctx">// context retrieved — 4 nodes matched</div>
+            <p><strong>[GitHub · yesterday 23:14]</strong> Deploy by @ravi — payment service updated to v2.3.1.<br/>
+            <strong>[Notion · 2w ago]</strong> Postmortem: v2.3.0 had connection pool exhaustion under load. Same service.<br/>
+            <strong>[PagerDuty]</strong> Same failure pattern as November outage — payment service timeout cascade.<br/>
+            <strong>[Confluence · runbook]</strong> Payment service recovery: restart pool, flush cache, confirm DB connections.</p>
+          </div>
+          <div class="t-block rag">
+            <div class="t-tag rag">// enriched prompt</div>
+            <p>"Production incident 23:14. Deploy: payment-service v2.3.1 by @ravi. Known pattern: connection pool exhaustion (postmortem 2w ago, same service). Similar to November outage. Runbook: restart pool, flush cache, confirm DB. On-call: @priya."</p>
+          </div>
+          <div class="t-block out">
+            <div class="t-tag out">// result</div>
+            <p>Root cause identified in minutes, not hours. Runbook surfaced automatically. Team skips the 45-minute investigation and goes straight to the fix.</p>
+          </div>
+        </div>
+
+        <div class="demo-pane" id="tab-onboarding">
+          <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">chatgpt "draft onboarding plan for new backend engineer joining Monday"</span></div>
+          <div class="t-block ctx">
+            <div class="t-tag ctx">// context retrieved — 5 nodes matched</div>
+            <p><strong>[GitHub]</strong> Stack: Node.js, Postgres, Redis, GCP. Current active repos: api-core, auth-service, payment-service.<br/>
+            <strong>[Linear · SPRINT-88]</strong> Current sprint: auth hardening. New hire likely touching auth-service week 1.<br/>
+            <strong>[Notion · onboarding feedback]</strong> Last 3 hires flagged: deployment process unclear, legacy payment service undocumented, RFC process unknown.<br/>
+            <strong>[Slack · #engineering]</strong> Team norm: async-first, decisions in Linear not Slack, PRs reviewed within 24h.</p>
+          </div>
+          <div class="t-block rag">
+            <div class="t-tag rag">// enriched prompt</div>
+            <p>"Onboarding plan: backend engineer. Stack: Node/Postgres/Redis/GCP. Week 1 context: auth hardening sprint. Known gaps from past hires: deployment docs, payment-service, RFC process. Team norms: async-first, Linear for decisions. Key contact: @rohan (backend architecture)."</p>
+          </div>
+          <div class="t-block out">
+            <div class="t-tag out">// result</div>
+            <p>Onboarding plan that addresses real gaps, references live sprint context, and reflects actual team norms. Not a generic checklist — a plan that reflects your company.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INTEGRATIONS ══ -->
+<section id="integrations" class="integrations-section">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Integrations</div>
+      <h2 class="section-h">Plug into any tool<br/>you already <em>use.</em></h2>
+      <p class="section-p">Connect your AI coding tools, dev workflow, and communication stack in minutes. Context flows automatically.</p>
+    </div>
+
+    <div class="popular-ints reveal">
+      <!-- Claude Code -->
+      <div class="pop-int-card">
+        <div class="pop-int-icon">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="6" fill="#8B5CF6"/>
+            <path d="M8 16L12 20L16 12L20 20L24 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="16" cy="8" r="2" fill="white"/>
+          </svg>
+        </div>
+        <div class="pop-int-info">
+          <span class="pop-int-name">Claude Code</span>
+          <span class="pop-int-cat">AI Coding</span>
+        </div>
+      </div>
+
+      <!-- OpenCode -->
+      <div class="pop-int-card">
+        <div class="pop-int-icon">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="6" fill="#00B4D8"/>
+            <path d="M10 22L16 10L22 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 18H20" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="24" cy="8" r="2" fill="white"/>
+          </svg>
+        </div>
+        <div class="pop-int-info">
+          <span class="pop-int-name">OpenCode</span>
+          <span class="pop-int-cat">AI Coding</span>
+        </div>
+      </div>
+
+      <!-- OpenClaw -->
+      <div class="pop-int-card">
+        <div class="pop-int-icon">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="6" fill="#FF6B35"/>
+            <path d="M8 20C8 20 10 16 16 16C22 16 24 20 24 20" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M10 14L12 10" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M14 12L14 8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M18 12L18 8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M22 14L20 10" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="pop-int-info">
+          <span class="pop-int-name">OpenClaw</span>
+          <span class="pop-int-cat">AI Coding</span>
+        </div>
+      </div>
+
+      <!-- GitHub -->
+      <div class="pop-int-card">
+        <div class="pop-int-icon">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="6" fill="#24292E"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M16 4C9.37 4 4 9.37 4 16C4 21.3 7.66 25.75 12.34 27.36C12.66 27.4 12.79 27.21 12.79 27.05V24.78C10.17 25.49 9.22 23.4 9.22 23.4C8.78 22.28 8.06 22.02 8.06 22.02C7.05 21.54 8.14 21.56 8.14 21.56C9.24 21.62 9.74 22.56 9.74 22.56C10.75 24.1 12.19 23.72 12.83 23.5C12.9 23.02 13.12 22.67 13.36 22.44C10.57 22.21 7.66 21.08 7.66 15.88C7.66 14.3 8.26 13 9.22 12C9.1 11.71 8.63 10.44 9.16 8.56C9.16 8.56 10.05 8.21 12.78 9.63C13.8 9.39 14.9 9.27 16 9.27C17.1 9.27 18.2 9.39 19.22 9.63C21.95 8.21 22.84 8.56 22.84 8.56C23.37 10.44 22.9 11.71 22.78 12C23.74 13 24.34 14.3 24.34 15.88C24.34 21.1 21.43 22.2 18.63 22.42C18.94 22.72 19.21 23.2 19.21 23.94V27.05C19.21 27.21 19.34 27.42 19.67 27.37C24.34 25.76 28 21.3 28 16C28 9.37 22.63 4 16 4Z" fill="white"/>
+          </svg>
+        </div>
+        <div class="pop-int-info">
+          <span class="pop-int-name">GitHub</span>
+          <span class="pop-int-cat">Version Control</span>
+        </div>
+      </div>
+
+      <!-- Slack -->
+      <div class="pop-int-card">
+        <div class="pop-int-icon">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="6" fill="#4A154B"/>
+            <path d="M12.5 19.5C12.5 20.88 11.38 22 10 22C8.62 22 7.5 20.88 7.5 19.5C7.5 18.12 8.62 17 10 17H12.5V19.5Z" fill="white"/>
+            <path d="M14.5 12.5C14.5 11.12 15.62 10 17 10C18.38 10 19.5 11.12 19.5 12.5C19.5 13.88 18.38 15 17 15H14.5V12.5Z" fill="white"/>
+            <path d="M19.5 14.5C20.88 14.5 22 15.62 22 17C22 18.38 20.88 19.5 19.5 19.5C18.12 19.5 17 18.38 17 17V14.5H19.5Z" fill="white"/>
+            <path d="M12.5 17C11.12 17 10 15.88 10 14.5C10 13.12 11.12 12 12.5 12C13.88 12 15 13.12 15 14.5H17.5V17H12.5Z" fill="white"/>
+          </svg>
+        </div>
+        <div class="pop-int-info">
+          <span class="pop-int-name">Slack</span>
+          <span class="pop-int-cat">Communication</span>
+        </div>
+      </div>
+
+      <!-- Linear -->
+      <div class="pop-int-card">
+        <div class="pop-int-icon">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="6" fill="#5E6AD2"/>
+            <path d="M24 8L8 24" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="8" cy="8" r="3" fill="white"/>
+          </svg>
+        </div>
+        <div class="pop-int-info">
+          <span class="pop-int-name">Linear</span>
+          <span class="pop-int-cat">Project Management</span>
+        </div>
+      </div>
+
+      <!-- Jira -->
+      <div class="pop-int-card">
+        <div class="pop-int-icon">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="6" fill="#0052CC"/>
+            <path d="M16 6L26 16L16 26L6 16L16 6Z" fill="white"/>
+            <path d="M16 12L22 18L16 24L10 18L16 12Z" fill="#0052CC"/>
+          </svg>
+        </div>
+        <div class="pop-int-info">
+          <span class="pop-int-name">Jira</span>
+          <span class="pop-int-cat">Project Management</span>
+        </div>
+      </div>
+
+      <!-- Notion -->
+      <div class="pop-int-card">
+        <div class="pop-int-icon">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="6" fill="#1A1A1A"/>
+            <path d="M8 8H24V10L8 24V8Z" fill="white"/>
+            <path d="M8 10H18V12L8 22V10Z" fill="white" opacity="0.6"/>
+            <path d="M8 22H16V24L8 24V22Z" fill="white"/>
+          </svg>
+        </div>
+        <div class="pop-int-info">
+          <span class="pop-int-name">Notion</span>
+          <span class="pop-int-cat">Documentation</span>
+        </div>
+      </div>
+
+      <!-- Cursor -->
+      <div class="pop-int-card">
+        <div class="pop-int-icon">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="6" fill="#000000"/>
+            <path d="M12 8L12 20L16 16L20 20L12 8Z" fill="white"/>
+            <circle cx="20" cy="12" r="2" fill="#00E5A0"/>
+          </svg>
+        </div>
+        <div class="pop-int-info">
+          <span class="pop-int-name">Cursor</span>
+          <span class="pop-int-cat">AI Coding</span>
+        </div>
+      </div>
+
+      <!-- More -->
+      <div class="int-more">
+        +40 more tools
+        <span>Coming soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NODES ══ -->
+<section style="background:var(--surface);border-top:1px solid var(--border)">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Context nodes</div>
+      <h2 class="section-h">Every signal,<br/><em>captured.</em></h2>
+      <p class="section-p">Each node is a lightweight local agent that listens to a source, summarises what matters, and writes it to the shared context store. Plug in only what you need.</p>
+    </div>
+    <div class="nodes-grid">
+      <div class="node-card"><span class="node-icon">⌥</span><h4>GitHub Repos & Changelogs</h4><p>Indexes PRs, commits, reviews, and changelogs. Captures architectural decisions, reverts, and code patterns your team has settled on.</p><div class="node-status"><span class="ns-dot"></span>Streaming diffs</div></div>
+      <div class="node-card"><span class="node-icon">◈</span><h4>Jira / Linear / Project Boards</h4><p>Tracks sprint state, priorities, blockers, and acceptance criteria. Your AI always knows what's in-scope this cycle and what's been deprioritised.</p><div class="node-status"><span class="ns-dot"></span>Live sync</div></div>
+      <div class="node-card"><span class="node-icon">◎</span><h4>Meetings & Voice Transcripts</h4><p>Joins Google Meet, Zoom, Teams, and offline recordings. Extracts decisions, action items, and sentiment signals from every conversation.</p><div class="node-status"><span class="ns-dot"></span>Real-time transcription</div></div>
+      <div class="node-card"><span class="node-icon">⬡</span><h4>AI Coding Sessions</h4><p>Logs every Claude Code, Cursor, and Copilot session — what was tried, what failed, what shipped. Prevents teams from re-investigating dead ends.</p><div class="node-status"><span class="ns-dot"></span>Session capture</div></div>
+      <div class="node-card"><span class="node-icon">◆</span><h4>Sales & Client Calls</h4><p>Extracts objections, commitments, competitor mentions, and deal blockers from every client conversation via Gong, Chorus, and direct recording.</p><div class="node-status"><span class="ns-dot"></span>Call analysis</div></div>
+      <div class="node-card"><span class="node-icon">✦</span><h4>Product Requirement Docs</h4><p>Parses PRDs, RFCs, and design docs from Notion, Confluence, and Google Docs. Keeps AI agents aligned with what was agreed, not what was assumed.</p><div class="node-status"><span class="ns-dot"></span>Doc indexing</div></div>
+      <div class="node-card"><span class="node-icon">⊕</span><h4>Chat & Email</h4><p>Monitors Slack, Teams, Discord, Gmail, and Outlook for informal decisions, escalations, and alignment moments that never make it into formal docs.</p><div class="node-status"><span class="ns-dot"></span>Message monitoring</div></div>
+      <div class="node-card" style="border-style:dashed;background:transparent;"><span class="node-icon" style="opacity:0.4">+</span><h4 style="color:var(--muted)">Custom nodes</h4><p>Connect any internal tool via the MemexHQ Node SDK. If it has an API or produces logs, it can be a context source.</p><div class="node-status" style="color:var(--dim)"><span style="width:5px;height:5px;border-radius:50%;background:var(--dim);display:inline-block;margin-right:4px"></span>SDK coming Q2</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATS ══ -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item reveal"><div class="stat-val"><em>0</em></div><div class="stat-label">bytes leave your<br/>local network</div></div>
+    <div class="stat-item reveal"><div class="stat-val">40<em>+</em></div><div class="stat-label">integrations<br/>at launch</div></div>
+    <div class="stat-item reveal"><div class="stat-val">&lt;80<em>ms</em></div><div class="stat-label">context retrieval<br/>latency</div></div>
+    <div class="stat-item reveal"><div class="stat-val">340<em>+</em></div><div class="stat-label">teams on<br/>waitlist</div></div>
+    <div class="stat-item reveal"><div class="stat-val">∞</div><div class="stat-label">AI agents<br/>supported</div></div>
+  </div>
+</div>
+
+<!-- ══ PRIVACY ══ -->
+<section>
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Security & Privacy</div>
+      <h2 class="section-h">Your network.<br/><em>Your data.</em> Full stop.</h2>
+      <p class="section-p">MemexHQ was designed from day one for enterprises with strict data requirements. Your institutional knowledge never touches our servers.</p>
+    </div>
+    <div class="privacy-grid">
+      <div class="privacy-features">
+        <div class="pf"><div class="pf-icon">🔒</div><div class="pf-body"><h4>Air-gapped by design</h4><p>The context server runs entirely on your local network. No data is sent to MemexHQ's servers. Ever. Air-gapped deployment available for maximum compliance.</p></div></div>
+        <div class="pf"><div class="pf-icon">⚡</div><div class="pf-body"><h4>Distributed vector store</h4><p>Context is stored across nodes in your network. No single point of failure, no vendor lock-in on your company's institutional memory.</p></div></div>
+        <div class="pf"><div class="pf-icon">🎯</div><div class="pf-body"><h4>Permission-aware retrieval</h4><p>Context is scoped to the querying user's access level. Engineers don't see sales data unless permitted. Fully configurable RBAC.</p></div></div>
+        <div class="pf"><div class="pf-icon">📋</div><div class="pf-body"><h4>Full audit trail</h4><p>Every context retrieval is logged locally. Know exactly what business context was injected into any AI session, by who, and when.</p></div></div>
+        <div class="pf"><div class="pf-icon">🛡️</div><div class="pf-body"><h4>SOC 2 Type II in progress</h4><p>GDPR compliant. SAML SSO supported. Enterprise SLA available. We meet your compliance requirements, not the other way around.</p></div></div>
+      </div>
+      <div class="network-diagram">
+        <div class="arch-label" style="text-align:left">// Your local network boundary</div>
+        <div class="nd-canvas" id="ndCanvas"><div class="nd-center">🖥️</div></div>
+        <div class="nd-label">All nodes · vector DB · AI enrichment → local only · zero cloud egress</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICING ══ -->
+<section id="pricing" class="pricing-section">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-h">Simple pricing.<br/><em>Serious</em> value.</h2>
+      <p class="section-p">Early access teams get permanent early-adopter pricing. All plans include local deployment and zero cloud egress.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">Startup</div>
+        <div class="price-val">$299 <span>/ mo</span></div>
+        <div class="price-desc">Up to 10 users. Perfect for founding teams already using AI heavily.</div>
+        <div class="price-features">
+          <div class="price-feat">Up to 10 users</div>
+          <div class="price-feat">5 context nodes</div>
+          <div class="price-feat">1 context server</div>
+          <div class="price-feat">All AI coding tool integrations</div>
+          <div class="price-feat">Community support</div>
+          <div class="price-feat">90-day context history</div>
+        </div>
+        <button class="price-btn" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">Get Early Access</button>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tier">Growth</div>
+        <div class="price-val">$899 <span>/ mo</span></div>
+        <div class="price-desc">Up to 50 users. For scaling teams where every AI query counts.</div>
+        <div class="price-features">
+          <div class="price-feat">Up to 50 users</div>
+          <div class="price-feat">Unlimited context nodes</div>
+          <div class="price-feat">3 context servers</div>
+          <div class="price-feat">All 40+ integrations</div>
+          <div class="price-feat">Priority support</div>
+          <div class="price-feat">Unlimited context history</div>
+          <div class="price-feat">Permission-aware retrieval</div>
+          <div class="price-feat">Full audit trail</div>
+        </div>
+        <button class="price-btn" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">Get Early Access</button>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Enterprise</div>
+        <div class="price-val">Custom</div>
+        <div class="price-desc">Unlimited users. Air-gapped deployment. For organisations with strict compliance requirements.</div>
+        <div class="price-features">
+          <div class="price-feat">Unlimited users</div>
+          <div class="price-feat">Air-gapped deployment option</div>
+          <div class="price-feat">SAML SSO + RBAC</div>
+          <div class="price-feat">SOC 2 / GDPR compliance docs</div>
+          <div class="price-feat">99.9% SLA</div>
+          <div class="price-feat">Dedicated onboarding engineer</div>
+          <div class="price-feat">Custom Node SDK support</div>
+          <div class="price-feat">White-glove setup</div>
+        </div>
+        <button class="price-btn" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">Talk to us</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SIGNUP ══ -->
+<section id="signup">
+  <div class="signup-inner">
+    <div class="signup-left">
+      <div class="section-label reveal">Early access</div>
+      <h2 class="section-h reveal">Be first to<br/><em>plug in.</em></h2>
+      <p class="section-p reveal">We're onboarding engineering-led teams who are already using AI heavily and feel the context gap every day. Early access includes white-glove node setup, direct line to the founding team, and permanent early-adopter pricing.</p>
+      <br/><br/>
+      <div class="testimonials">
+        <div class="testi reveal"><strong>Rohan M. · VP Engineering</strong>"Our Claude Code sessions kept re-litigating architecture we'd already decided. MemexHQ fixed that in the first week."</div>
+        <div class="testi reveal"><strong>Sarah K. · Founding Engineer</strong>"The sales call node alone changed how our product team writes specs. They finally have ground truth from customers instead of assumptions."</div>
+        <div class="testi reveal"><strong>Arjun T. · Staff Engineer</strong>"I stopped dreading the context-dump at the start of every AI session. MemexHQ just handles it."</div>
+      </div>
+    </div>
+    <div class="form-card reveal">
+      <div class="form-card-header" id="fch">
+        <p>Request access</p>
+        <h3>Join the waitlist</h3>
+      </div>
+      <form class="sform" id="mainForm" novalidate>
+        <div class="sfield" id="sf-email">
+          <label for="memail">Work email</label>
+          <input type="email" id="memail" placeholder="you@company.com" autocomplete="email"/>
+          <div class="serror">Please enter a valid work email.</div>
+        </div>
+        <div class="sfield" id="sf-company">
+          <label for="mcompany">Company</label>
+          <input type="text" id="mcompany" placeholder="Acme Corp"/>
+          <div class="serror">Company name is required.</div>
+        </div>
+        <div class="sfield">
+          <label>Your role</label>
+          <div class="role-grid" id="mainRoleGrid">
+            <button type="button" class="role-btn" data-role="engineering">⬡ Engineering</button>
+            <button type="button" class="role-btn" data-role="product">◈ Product</button>
+            <button type="button" class="role-btn" data-role="sales">◎ Sales</button>
+            <button type="button" class="role-btn" data-role="founder">◆ Founder / CXO</button>
+          </div>
+        </div>
+        <div class="sdivider"><span>team scale</span></div>
+        <div class="sfield" id="sf-size">
+          <label for="msize">Team size</label>
+          <select id="msize">
+            <option value="" disabled selected>Select team size</option>
+            <option value="1-10">1 – 10 people</option>
+            <option value="11-50">11 – 50 people</option>
+            <option value="51-200">51 – 200 people</option>
+            <option value="201+">201 + people</option>
+          </select>
+          <div class="serror">Please select your team size.</div>
+        </div>
+        <button type="submit" class="submit-btn" id="mainSubmit">Request Early Access →</button>
+        <div class="form-note">No spam. We'll reach out with a private demo link and node setup guide.</div>
+      </form>
+      <div class="signup-success" id="mainSuccess">
+        <div class="s-icon">✓</div>
+        <h4>You're on the list.</h4>
+        <p>Expect a node configuration guide and private demo link. We onboard teams in batches — you'll hear from us soon.</p>
+        <div class="ref-code" id="mainRef">MEM — ········</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="text-decoration:none">
+        <div class="logo-mark">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="30" width="32" height="2.5" rx="1.25" fill="currentColor"/>
+            <rect x="4" y="12" width="11" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="6.5" y="15" width="6" height="1.2" rx="0.6" fill="currentColor" opacity="0.4"/>
+            <rect x="6.5" y="17.5" width="4" height="1.2" rx="0.6" fill="currentColor" opacity="0.25"/>
+            <rect x="25" y="12" width="11" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="27.5" y="15" width="6" height="1.2" rx="0.6" fill="currentColor" opacity="0.4"/>
+            <rect x="27.5" y="17.5" width="3.5" height="1.2" rx="0.6" fill="currentColor" opacity="0.25"/>
+            <line x1="15" y1="19" x2="25" y2="19" stroke="currentColor" stroke-width="1.2" stroke-dasharray="1.5 2" opacity="0.6"/>
+            <circle cx="20" cy="19" r="2.2" fill="currentColor"/>
+            <circle cx="20" cy="19" r="0.9" fill="var(--bg)"/>
+            <line x1="9.5" y1="26" x2="9.5" y2="30" stroke="currentColor" stroke-width="1.2" opacity="0.5"/>
+            <line x1="30.5" y1="26" x2="30.5" y2="30" stroke="currentColor" stroke-width="1.2" opacity="0.5"/>
+            <circle cx="20" cy="6.5" r="3" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.5"/>
+            <circle cx="20" cy="6.5" r="1" fill="currentColor" opacity="0.5"/>
+          </svg>
+        </div>
+        MemexHQ
+      </a>
+      <p>Your AI finally knows your business. All context local. All agents smarter. Zero setup after day one.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Product</h5>
+      <a href="#how">How it works</a>
+      <a href="#integrations">Integrations</a>
+      <a href="#demo">Demo</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="#">About</a>
+      <a href="#">Blog</a>
+      <a href="#">Careers</a>
+      <a href="mailto:hello@memexhq.dev">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h5>Legal</h5>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Security</a>
+      <a href="#">GDPR</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 MemexHQ. All rights reserved.</span>
+    <span>Your AI finally knows your business.</span>
+    <span>memexhq.dev</span>
+  </div>
+</footer>
+
+<script src="/scripts/main.js"></script>
+</body>
+</html>
