@@ -102,16 +102,13 @@
     let valid=true;
     const email=document.getElementById('memail');
     const company=document.getElementById('mcompany');
-    const size=document.getElementById('msize');
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){document.getElementById('sf-email').classList.add('err');valid=false;}
     else{document.getElementById('sf-email').classList.remove('err');}
     if(!company.value.trim()){document.getElementById('sf-company').classList.add('err');valid=false;}
     else{document.getElementById('sf-company').classList.remove('err');}
-    if(!size.value){document.getElementById('sf-size').classList.add('err');valid=false;}
-    else{document.getElementById('sf-size').classList.remove('err');}
     if(!valid)return;
     const btn=document.getElementById('mainSubmit');
-    btn.textContent='Connecting nodes…';btn.disabled=true;btn.style.opacity='.7';
+    btn.textContent='Sending…';btn.disabled=true;btn.style.opacity='.7';
     setTimeout(()=>{
       form.classList.add('hide');
       const fch=document.getElementById('fch');
@@ -127,6 +124,4 @@
     const el=document.getElementById(id);
     if(el) el.addEventListener('input',function(){this.closest('.sfield').classList.remove('err');});
   });
-  const msize=document.getElementById('msize');
-  if(msize) msize.addEventListener('change',function(){document.getElementById('sf-size').classList.remove('err');});
 })();

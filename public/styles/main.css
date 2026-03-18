@@ -71,8 +71,7 @@ nav {
   align-items: center;
   gap: 10px;
   font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  letter-spacing: 0.12em;
   color: var(--accent);
   text-decoration: none;
   font-weight: 500;
@@ -544,46 +543,43 @@ section { position: relative; z-index: 1; }
 .demo-pane { display: none; }
 .demo-pane.active { display: block; }
 
-/* ── POPULAR INTEGRATIONS ── */
 .popular-ints {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
   margin-top: 40px;
-}
-.pop-int-card {
-  display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 14px 20px;
+}
+.pop-int-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  padding: 8px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 10px;
   transition: border-color 0.25s, transform 0.2s, box-shadow 0.2s;
-  cursor: default;
 }
-.pop-int-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,229,160,0.1); }
-.pop-int-icon { width: 32px; height: 32px; display: grid; place-items: center; flex-shrink: 0; }
-.pop-int-icon svg { width: 28px; height: 28px; }
-.pop-int-info { display: flex; flex-direction: column; gap: 2px; }
-.pop-int-name { font-size: 12px; font-weight: 500; color: var(--text); letter-spacing: 0.02em; }
-.pop-int-cat { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); }
+.pop-int-logo:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,229,160,0.1); }
 
 .int-more {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 20px;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 8px;
   background: transparent;
   border: 1px dashed var(--border);
   border-radius: 10px;
-  font-size: 11px;
-  letter-spacing: 0.08em;
+  font-size: 10px;
+  letter-spacing: 0.04em;
   color: var(--muted);
   transition: border-color 0.25s, color 0.2s;
 }
 .int-more:hover { border-color: var(--accent); color: var(--text); }
-.int-more span { font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); margin-left: auto; }
+
+.arch-logo { width: 24px; height: 24px; object-fit: contain; }
 
 /* ── NODES SECTION ── */
 .nodes-grid {
