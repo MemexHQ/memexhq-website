@@ -512,11 +512,6 @@ export default function Home() {
                 <div className="ids-desc">Every AI query gets smarter automatically</div>
               </div>
             </div>
-            <div className="id-stats">
-              <div className="ids-item"><span className="ids-val">40+</span><span className="ids-lbl">integrations</span></div>
-              <div className="ids-item"><span className="ids-val">&lt;80ms</span><span className="ids-lbl">retrieval</span></div>
-              <div className="ids-item"><span className="ids-val">0</span><span className="ids-lbl">bytes to cloud</span></div>
-            </div>
           </div>
         </div>
       </section>
@@ -583,11 +578,11 @@ export default function Home() {
 
       <div className="stats-bar">
         <div className="stats-inner">
-          <div className="stat-item reveal"><div className="stat-val"><em>0</em></div><div className="stat-label">bytes leave your<br/>local network</div></div>
-          <div className="stat-item reveal"><div className="stat-val">40<em>+</em></div><div className="stat-label">integrations<br/>at launch</div></div>
-          <div className="stat-item reveal"><div className="stat-val">&lt;80<em>ms</em></div><div className="stat-label">context retrieval<br/>latency</div></div>
-          <div className="stat-item reveal"><div className="stat-val">340<em>+</em></div><div className="stat-label">teams on<br/>waitlist</div></div>
-          <div className="stat-item reveal"><div className="stat-val">∞</div><div className="stat-label">AI agents<br/>supported</div></div>
+            <div className="stat-item reveal"><div className="stat-val">0</div><div className="stat-label">bytes leave your<br/>local network</div></div>
+            <div className="stat-item reveal"><div className="stat-val">40<em>+</em></div><div className="stat-label">integrations<br/>at launch</div></div>
+            <div className="stat-item reveal"><div className="stat-val">&lt;80<em>ms</em></div><div className="stat-label">context retrieval<br/>latency</div></div>
+            <div className="stat-item reveal"><div className="stat-val">100<em>%</em></div><div className="stat-label">open source<br/>coming soon</div></div>
+            <div className="stat-item reveal"><div className="stat-val">all</div><div className="stat-label">AI agents<br/>supported</div></div>
         </div>
       </div>
 
