@@ -39,11 +39,12 @@
   </a>
   <ul class="nav-links">
     <li><a href="#how">How it works</a></li>
-    <li><a href="#integrations">Integrations</a></li>
     <li><a href="#demo">Demo</a></li>
+    <li><a href="#integrations">Integrations</a></li>
+    <li><a href="#nodes">Context nodes</a></li>
   </ul>
   <div class="nav-right">
-    <button class="theme-toggle" id="themeToggle" title="Toggle theme">☀️</button>
+
     <a href="#signup" class="nav-cta">Get Notified</a>
   </div>
 </nav>
@@ -69,12 +70,13 @@
   <div class="hero-integrations">
     <div class="hi-label">Works with your entire stack</div>
     <div class="hi-logos">
-      <span class="hi-logo">Claude Code</span>
-      <span class="hi-logo">OpenCode</span>
-      <span class="hi-logo">OpenClaw</span>
-      <span class="hi-logo">GitHub</span>
-      <span class="hi-logo">Slack</span>
-      <span class="hi-logo">Linear</span>
+      <img src="/components/dark/Claude.svg" alt="Claude Code" style="width:20px;height:20px;object-fit:contain;"/>
+      <img src="/components/dark/OpenClaw.svg" alt="OpenClaw" style="width:20px;height:20px;object-fit:contain;"/>
+      <img src="/components/dark/GitHub.svg" alt="GitHub" style="width:20px;height:20px;object-fit:contain;"/>
+      <img src="/components/dark/Linear.svg" alt="Linear" style="width:20px;height:20px;object-fit:contain;"/>
+      <img src="/components/dark/Jira.svg" alt="Jira" style="width:20px;height:20px;object-fit:contain;"/>
+      <img src="/components/dark/Notion.svg" alt="Notion" style="width:20px;height:20px;object-fit:contain;"/>
+      <img src="/components/dark/Gmail.svg" alt="Gmail" style="width:20px;height:20px;object-fit:contain;"/>
       <span class="hi-logo">+ more</span>
     </div>
   </div>
@@ -152,21 +154,17 @@
       <div class="steps">
         <div class="step"><div class="step-num">01</div><div class="step-body"><h4>Nodes collect context silently</h4><p>Local agents attach to every tool your team uses. They listen, summarise, tag, and timestamp meaningful signals — architecture decisions, client objections, sprint priorities, code patterns, and team agreements.</p></div></div>
         <div class="step"><div class="step-num">02</div><div class="step-body"><h4>Stored locally in a distributed vector DB</h4><p>Summaries are embedded and stored in your private vector database — entirely on your network. Semantic search retrieves the right context for any query, not keyword matching, actual meaning.</p></div></div>
-        <div class="step"><div class="step-num">03</div><div class="step-body"><h4>Every AI query is enriched automatically</h4><p>When anyone queries Claude Code, ChatGPT, or Gemini, MemexHQ intercepts the query, retrieves the top-k relevant context, and prepends it. The AI receives a fully briefed prompt. No extra work from your team.</p></div></div>
-        <div class="step"><div class="step-num">04</div><div class="step-body"><h4>Collective memory compounds over time</h4><p>Every AI session output feeds back into the context store. MemexHQ gets smarter about your business with every interaction. The longer you run it, the more institutional knowledge it captures.</p></div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-body"><h4>Collective memory compounds over time</h4><p>Every AI session output feeds back into the context store. MemexHQ gets smarter about your business with every interaction. The longer you run it, the more institutional knowledge it captures.</p></div></div>
       </div>
       <div class="arch-diagram">
         <div class="arch-label">// System architecture</div>
         <div class="arch-nodes">
-          <div class="arch-node"><img src="/components/GitHub.svg" alt="GitHub" class="arch-logo"/></div>
-          <div class="arch-node"><img src="/components/Jira.svg" alt="Jira" class="arch-logo"/></div>
-          <div class="arch-node"><img src="/components/Claude.svg" alt="Claude Code" class="arch-logo"/></div>
-          <div class="arch-node"><img src="/components/Notion.svg" alt="Notion" class="arch-logo"/></div>
-          <div class="arch-node"><img src="/components/Linear.svg" alt="Linear" class="arch-logo"/></div>
-          <div class="arch-node"><img src="/components/OpenCode.svg" alt="OpenCode" class="arch-logo"/></div>
-          <div class="arch-node"><img src="/components/OpenAI.svg" alt="OpenAI" class="arch-logo"/></div>
-          <div class="arch-node"><img src="/components/Cursor.svg" alt="Cursor" class="arch-logo"/></div>
-          <div class="arch-node"><img src="/components/OpenClaw.svg" alt="OpenClaw" class="arch-logo"/></div>
+          <div class="arch-node"><img src="/components/dark/OpenClaw.svg" alt="OpenClaw" class="arch-logo"/></div>
+          <div class="arch-node"><img src="/components/dark/GitHub.svg" alt="GitHub" class="arch-logo"/></div>
+          <div class="arch-node"><img src="/components/dark/Jira.svg" alt="Jira" class="arch-logo"/></div>
+          <div class="arch-node"><img src="/components/dark/Claude.svg" alt="Claude Code" class="arch-logo"/></div>
+          <div class="arch-node"><img src="/components/dark/Notion.svg" alt="Notion" class="arch-logo"/></div>
+          <div class="arch-node"><img src="/components/dark/Linear.svg" alt="Linear" class="arch-logo"/></div>
         </div>
         <div class="arch-arrow">↓</div>
         <div class="arch-server">
@@ -343,24 +341,47 @@
     </div>
 
     <div class="popular-ints reveal">
-      <img src="/components/Claude.svg" alt="Claude Code" class="pop-int-logo"/>
-      <img src="/components/OpenCode.svg" alt="OpenCode" class="pop-int-logo"/>
-      <img src="/components/OpenClaw.svg" alt="OpenClaw" class="pop-int-logo"/>
-      <img src="/components/Cursor.svg" alt="Cursor" class="pop-int-logo"/>
-      <img src="/components/GitHub.svg" alt="GitHub" class="pop-int-logo"/>
-      <img src="/components/Linear.svg" alt="Linear" class="pop-int-logo"/>
-      <img src="/components/Jira.svg" alt="Jira" class="pop-int-logo"/>
-      <img src="/components/Notion.svg" alt="Notion" class="pop-int-logo"/>
-      <img src="/components/Gmail.svg" alt="Gmail" class="pop-int-logo"/>
-      <img src="/components/Discord.svg" alt="Discord" class="pop-int-logo"/>
-      <img src="/components/OpenAI.svg" alt="OpenAI" class="pop-int-logo"/>
+      <img src="/components/dark/Claude.svg" alt="Claude Code" class="pop-int-logo"/>
+      <img src="/components/dark/OpenClaw.svg" alt="OpenClaw" class="pop-int-logo"/>
+      <img src="/components/dark/GitHub.svg" alt="GitHub" class="pop-int-logo"/>
+      <img src="/components/dark/Linear.svg" alt="Linear" class="pop-int-logo"/>
+      <img src="/components/dark/Jira.svg" alt="Jira" class="pop-int-logo"/>
+      <img src="/components/dark/Notion.svg" alt="Notion" class="pop-int-logo"/>
+      <img src="/components/dark/Gmail.svg" alt="Gmail" class="pop-int-logo"/>
       <div class="int-more">+30 more</div>
+    </div>
+    <div class="ints-diagram reveal">
+      <div class="id-header">// How context flows</div>
+      <div class="id-flow">
+        <div class="id-step">
+          <div class="ids-icon">📊</div>
+          <div class="ids-label">Connect</div>
+          <div class="ids-desc">Attach nodes to your tools in minutes</div>
+        </div>
+        <div class="id-arrow">→</div>
+        <div class="id-step">
+          <div class="ids-icon">🧠</div>
+          <div class="ids-label">Context</div>
+          <div class="ids-desc">AI context stored locally, indexed automatically</div>
+        </div>
+        <div class="id-arrow">→</div>
+        <div class="id-step">
+          <div class="ids-icon">⚡</div>
+          <div class="ids-label">Enrich</div>
+          <div class="ids-desc">Every AI query gets smarter automatically</div>
+        </div>
+      </div>
+      <div class="id-stats">
+        <div class="ids-item"><span class="ids-val">40+</span><span class="ids-lbl">integrations</span></div>
+        <div class="ids-item"><span class="ids-val">&lt;80ms</span><span class="ids-lbl">retrieval</span></div>
+        <div class="ids-item"><span class="ids-val">0</span><span class="ids-lbl">bytes to cloud</span></div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ══ NODES ══ -->
-<section style="background:var(--surface);border-top:1px solid var(--border)">
+<section id="nodes" style="background:var(--surface);border-top:1px solid var(--border)">
   <div class="section-inner">
     <div class="reveal">
       <div class="section-label">Context nodes</div>
@@ -375,7 +396,7 @@
       <div class="node-card"><span class="node-icon">◆</span><h4>Sales & Client Calls</h4><p>Extracts objections, commitments, competitor mentions, and deal blockers from every client conversation via Gong, Chorus, and direct recording.</p><div class="node-status"><span class="ns-dot"></span>Call analysis</div></div>
       <div class="node-card"><span class="node-icon">✦</span><h4>Product Requirement Docs</h4><p>Parses PRDs, RFCs, and design docs from Notion, Confluence, and Google Docs. Keeps AI agents aligned with what was agreed, not what was assumed.</p><div class="node-status"><span class="ns-dot"></span>Doc indexing</div></div>
       <div class="node-card"><span class="node-icon">⊕</span><h4>Chat & Email</h4><p>Monitors Slack, Teams, Discord, Gmail, and Outlook for informal decisions, escalations, and alignment moments that never make it into formal docs.</p><div class="node-status"><span class="ns-dot"></span>Message monitoring</div></div>
-      <div class="node-card" style="border-style:dashed;background:transparent;"><span class="node-icon" style="opacity:0.4">+</span><h4 style="color:var(--muted)">Custom nodes</h4><p>Connect any internal tool via the MemexHQ Node SDK. If it has an API or produces logs, it can be a context source.</p><div class="node-status" style="color:var(--dim)"><span style="width:5px;height:5px;border-radius:50%;background:var(--dim);display:inline-block;margin-right:4px"></span>SDK coming Q2</div></div>
+      <div class="node-card" style="border-style:dashed;background:transparent;"><span class="node-icon" style="opacity:0.4">+</span><h4 style="color:var(--muted)">Custom nodes</h4><p>Connect any internal tool via the MemexHQ Node SDK. If it has an API or produces logs, it can be a context source.</p><div class="node-status" style="color:var(--dim)"><span style="width:5px;height:5px;border-radius:50%;background:var(--dim);display:inline-block;margin-right:4px"></span>Coming soon</div></div>
     </div>
   </div>
 </section>

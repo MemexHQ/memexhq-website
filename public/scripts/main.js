@@ -19,18 +19,6 @@
   resize();init();draw();
 })();
 
-/* ── THEME TOGGLE ── */
-(function(){
-  const btn=document.getElementById('themeToggle');
-  if(!btn) return;
-  btn.addEventListener('click',()=>{
-    const html=document.documentElement;
-    const isDark=html.getAttribute('data-theme')==='dark';
-    html.setAttribute('data-theme',isDark?'light':'dark');
-    btn.textContent=isDark?'🌙':'☀️';
-  });
-})();
-
 /* ── NETWORK DIAGRAM ── */
 (function(){
   const wrap=document.getElementById('ndCanvas');

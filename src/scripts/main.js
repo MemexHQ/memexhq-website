@@ -23,11 +23,23 @@
 (function(){
   const btn=document.getElementById('themeToggle');
   if(!btn) return;
+  
+  function updateLogoVariants(isDark){
+    document.querySelectorAll('[data-dark-src]').forEach(img=>{
+      const darkSrc=img.getAttribute('data-dark-src');
+      const lightSrc=img.getAttribute('src');
+      img.src=isDark?darkSrc:lightSrc;
+    });
+  }
+  
+  updateLogoVariants(document.documentElement.getAttribute('data-theme')==='dark');
+  
   btn.addEventListener('click',()=>{
     const html=document.documentElement;
     const isDark=html.getAttribute('data-theme')==='dark';
     html.setAttribute('data-theme',isDark?'light':'dark');
-    btn.textContent=isDark?'🌙':'☀️';
+    btn.textContent=isDark?'☀️':'🌙';
+    updateLogoVariants(!isDark);
   });
 })();
 
