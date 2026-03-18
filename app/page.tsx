@@ -91,8 +91,27 @@ export default function Home() {
   useEffect(() => {
     const wrap = document.getElementById('ndCanvas')
     if (!wrap) return
+    
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+    svg.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1'
+    
     const icons = ['⌥', '◈', '◎', '⬡', '◆', '✦']
     const pos = [[50, 8], [85, 28], [88, 68], [50, 90], [12, 68], [12, 28]]
+    
+    pos.forEach((p) => {
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line')
+      line.setAttribute('x1', '50%')
+      line.setAttribute('y1', '50%')
+      line.setAttribute('x2', p[0] + '%')
+      line.setAttribute('y2', p[1] + '%')
+      line.setAttribute('stroke', 'rgba(0,229,160,0.2)')
+      line.setAttribute('stroke-width', '1')
+      line.setAttribute('stroke-dasharray', '4 4')
+      svg.appendChild(line)
+    })
+    
+    wrap.appendChild(svg)
+    
     pos.forEach((p, i) => {
       const nd = document.createElement('div')
       nd.style.cssText = `position:absolute;width:36px;height:36px;left:${p[0]}%;top:${p[1]}%;transform:translate(-50%,-50%);background:var(--surface2);border:1px solid var(--border2);border-radius:7px;display:grid;place-items:center;font-size:12px;transition:border-color .3s;z-index:2`

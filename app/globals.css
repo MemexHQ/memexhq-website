@@ -677,6 +677,7 @@ section { position: relative; z-index: 1; }
   border: 1.5px solid var(--accent); border-radius: 50%;
   display: grid; place-items: center; font-size: 18px;
   box-shadow: 0 0 28px rgba(0,229,160,0.2);
+  z-index: 2;
 }
 .nd-label { font-size: 9px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; margin-top: 14px; }
 
