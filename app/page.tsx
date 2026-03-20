@@ -288,13 +288,13 @@ export default function Home() {
         <div className="hero-integrations">
           <div className="hi-label">Works with your entire stack</div>
           <div className="hi-logos">
-            <img src="/components/dark/Claude.svg" alt="Claude Code" style={{ width: 20, height: 20, objectFit: 'contain' }} />
-            <img src="/components/dark/OpenClaw.svg" alt="OpenClaw" style={{ width: 20, height: 20, objectFit: 'contain' }} />
-            <img src="/components/dark/GitHub.svg" alt="GitHub" style={{ width: 20, height: 20, objectFit: 'contain' }} />
-            <img src="/components/dark/Linear.svg" alt="Linear" style={{ width: 20, height: 20, objectFit: 'contain' }} />
-            <img src="/components/dark/Jira.svg" alt="Jira" style={{ width: 20, height: 20, objectFit: 'contain' }} />
-            <img src="/components/dark/Notion.svg" alt="Notion" style={{ width: 20, height: 20, objectFit: 'contain' }} />
-            <img src="/components/dark/Gmail.svg" alt="Gmail" style={{ width: 20, height: 20, objectFit: 'contain' }} />
+            <img src="/components/Claude.svg" alt="Claude Code" style={{ width: 20, height: 20, objectFit: 'contain' }} />
+            <img src="/components/OpenClaw.svg" alt="OpenClaw" style={{ width: 20, height: 20, objectFit: 'contain' }} />
+            <img src="/components/GitHub.svg" alt="GitHub" style={{ width: 20, height: 20, objectFit: 'contain' }} />
+            <img src="/components/Linear.svg" alt="Linear" style={{ width: 20, height: 20, objectFit: 'contain' }} />
+            <img src="/components/Jira.svg" alt="Jira" style={{ width: 20, height: 20, objectFit: 'contain' }} />
+            <img src="/components/Notion.svg" alt="Notion" style={{ width: 20, height: 20, objectFit: 'contain' }} />
+            <img src="/components/Gmail.svg" alt="Gmail" style={{ width: 20, height: 20, objectFit: 'contain' }} />
             <span className="hi-logo">+ more</span>
           </div>
         </div>
@@ -398,12 +398,12 @@ export default function Home() {
             <div className="arch-diagram">
               <div className="arch-label">// System architecture</div>
               <div className="arch-nodes">
-                <div className="arch-node"><img src="/components/dark/OpenClaw.svg" alt="OpenClaw" className="arch-logo"/></div>
-                <div className="arch-node"><img src="/components/dark/GitHub.svg" alt="GitHub" className="arch-logo"/></div>
-                <div className="arch-node"><img src="/components/dark/Jira.svg" alt="Jira" className="arch-logo"/></div>
-                <div className="arch-node"><img src="/components/dark/Claude.svg" alt="Claude Code" className="arch-logo"/></div>
-                <div className="arch-node"><img src="/components/dark/Notion.svg" alt="Notion" className="arch-logo"/></div>
-                <div className="arch-node"><img src="/components/dark/Linear.svg" alt="Linear" className="arch-logo"/></div>
+                <div className="arch-node"><img src="/components/OpenClaw.svg" alt="OpenClaw" className="arch-logo"/></div>
+                <div className="arch-node"><img src="/components/GitHub.svg" alt="GitHub" className="arch-logo"/></div>
+                <div className="arch-node"><img src="/components/Jira.svg" alt="Jira" className="arch-logo"/></div>
+                <div className="arch-node"><img src="/components/Claude.svg" alt="Claude Code" className="arch-logo"/></div>
+                <div className="arch-node"><img src="/components/Notion.svg" alt="Notion" className="arch-logo"/></div>
+                <div className="arch-node"><img src="/components/Linear.svg" alt="Linear" className="arch-logo"/></div>
               </div>
               <div className="arch-arrow">↓</div>
               <div className="arch-server">
@@ -481,13 +481,13 @@ export default function Home() {
           </div>
 
           <div className="popular-ints reveal">
-            <img src="/components/dark/Claude.svg" alt="Claude Code" className="pop-int-logo"/>
-            <img src="/components/dark/OpenClaw.svg" alt="OpenClaw" className="pop-int-logo"/>
-            <img src="/components/dark/GitHub.svg" alt="GitHub" className="pop-int-logo"/>
-            <img src="/components/dark/Linear.svg" alt="Linear" className="pop-int-logo"/>
-            <img src="/components/dark/Jira.svg" alt="Jira" className="pop-int-logo"/>
-            <img src="/components/dark/Notion.svg" alt="Notion" className="pop-int-logo"/>
-            <img src="/components/dark/Gmail.svg" alt="Gmail" className="pop-int-logo"/>
+            <img src="/components/Claude.svg" alt="Claude Code" className="pop-int-logo"/>
+            <img src="/components/OpenClaw.svg" alt="OpenClaw" className="pop-int-logo"/>
+            <img src="/components/GitHub.svg" alt="GitHub" className="pop-int-logo"/>
+            <img src="/components/Linear.svg" alt="Linear" className="pop-int-logo"/>
+            <img src="/components/Jira.svg" alt="Jira" className="pop-int-logo"/>
+            <img src="/components/Notion.svg" alt="Notion" className="pop-int-logo"/>
+            <img src="/components/Gmail.svg" alt="Gmail" className="pop-int-logo"/>
             <div className="int-more">+30 more</div>
           </div>
 
