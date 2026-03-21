@@ -16,8 +16,6 @@ export default function Home() {
     const ctx = c.getContext('2d')
     if (!ctx) return
 
-    if (!ctx) return
-
     let W = c.width = window.innerWidth
     let H = c.height = window.innerHeight
     interface Node { x: number; y: number; vx: number; vy: number; r: number; a: boolean }
@@ -36,7 +34,10 @@ export default function Home() {
       }
     }
 
+    let animationId: number
+
     function draw() {
+      // ctx is guaranteed non-null here (checked at useEffect start)
       ctx!.clearRect(0, 0, W, H)
       nodes.forEach(n => {
         n.x += n.vx
@@ -66,16 +67,22 @@ export default function Home() {
         ctx!.fillStyle = n.a ? 'rgba(0,229,160,.65)' : 'rgba(0,102,255,.65)'
         ctx!.fill()
       })
-      requestAnimationFrame(draw)
+      animationId = requestAnimationFrame(draw)
     }
 
-    window.addEventListener('resize', () => {
+    const handleResize = () => {
       W = c.width = window.innerWidth
       H = c.height = window.innerHeight
-    })
+    }
 
+    window.addEventListener('resize', handleResize)
     init()
-    draw()
+    animationId = requestAnimationFrame(draw)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      cancelAnimationFrame(animationId)
+    }
   }, [])
 
   useEffect(() => {
@@ -125,8 +132,11 @@ export default function Home() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const form = e.currentTarget
-    const email = (form.elements.namedItem('email') as HTMLInputElement).value
-    const company = (form.elements.namedItem('company') as HTMLInputElement).value
+    const emailEl = form.elements.namedItem('email')
+    const companyEl = form.elements.namedItem('company')
+    if (!(emailEl instanceof HTMLInputElement) || !(companyEl instanceof HTMLInputElement)) return
+    const email = emailEl.value
+    const company = companyEl.value
 
     let valid = true
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {

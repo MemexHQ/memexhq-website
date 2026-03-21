@@ -1,11 +1,173 @@
 'use client'
 
+import { useCallback, useEffect, useRef } from 'react'
+import JSZip from 'jszip'
+import { saveAs } from 'file-saver'
 import '../globals.css'
 
+const ASSETS = [
+  { svg: '/components/logo-dark.svg', png: '/components/logo-dark.svg', label: 'Logo + wordmark (dark)', hasText: true },
+  { svg: '/components/logo-light.svg', png: '/components/logo-light.svg', label: 'Logo + wordmark (light)', hasText: true },
+  { svg: '/components/logo-mark-dark.svg', png: '/components/logo-mark-dark.svg', label: 'Logo mark (dark)', hasText: false },
+  { svg: '/components/logo-mark-light.svg', png: '/components/logo-mark-light.svg', label: 'Logo mark (light)', hasText: false },
+  { svg: '/components/logo.svg', png: '/components/logo.svg', label: 'Logo (default)', hasText: false },
+  { svg: '/components/favicon.svg', png: '/components/favicon.svg', label: 'Favicon', hasText: false },
+]
+
+async function svgToBlob(svgUrl: string, scale = 2): Promise<Blob> {
+  const response = await fetch(svgUrl)
+  const svgText = await response.text()
+  const img = new Image()
+  const svgBlob = new Blob([svgText], { type: 'image/svg+xml;charset=utf-8' })
+  const url = URL.createObjectURL(svgBlob)
+  return new Promise((resolve, reject) => {
+    img.onload = () => {
+      const canvas = document.createElement('canvas')
+      canvas.width = img.width * scale
+      canvas.height = img.height * scale
+      const ctx = canvas.getContext('2d')
+      if (!ctx) {
+        reject(new Error('Failed to get canvas context'))
+        return
+      }
+      ctx.scale(scale, scale)
+      ctx.drawImage(img, 0, 0)
+      URL.revokeObjectURL(url)
+      canvas.toBlob((blob) => {
+        if (blob) resolve(blob)
+        else reject(new Error('Failed to convert SVG to PNG'))
+      }, 'image/png')
+    }
+    img.onerror = reject
+    img.src = url
+  })
+}
+
+async function downloadPng(svgUrl: string, filename: string) {
+  const blob = await svgToBlob(svgUrl)
+  saveAs(blob, filename.replace('.svg', '.png'))
+}
+
+async function downloadAll() {
+  const zip = new JSZip()
+  for (const asset of ASSETS) {
+    const svgResponse = await fetch(asset.svg)
+    const svgText = await svgResponse.text()
+    zip.file(asset.svg.replace('/components/', ''), svgText)
+    try {
+      const pngBlob = await svgToBlob(asset.png)
+      zip.file(asset.png.replace('/components/', '').replace('.svg', '.png'), pngBlob)
+    } catch (error) {
+      console.warn(`PNG conversion failed for ${asset.label}:`, error)
+    }
+  }
+  const blob = await zip.generateAsync({ type: 'blob' })
+  saveAs(blob, 'memexhq-brand.zip')
+}
+
 export default function BrandPage() {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    const c = canvasRef.current
+    if (!c) return
+    const ctx = c.getContext('2d')
+    if (!ctx) return
+
+    let W: number, H: number
+    interface Node { x: number; y: number; vx: number; vy: number; r: number; a: boolean }
+    let nodes: Node[] = []
+
+    function resize() {
+      W = c!.width = window.innerWidth
+      H = c!.height = window.innerHeight
+    }
+
+    function createNode(): Node {
+      return {
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.22,
+        vy: (Math.random() - 0.5) * 0.22,
+        r: Math.random() * 1.8 + 0.8,
+        a: Math.random() > 0.5
+      }
+    }
+
+    function init() {
+      nodes = Array.from({ length: 55 }, createNode)
+    }
+
+    let animationId: number
+
+    function draw() {
+      // ctx is guaranteed non-null here (checked at useEffect start)
+      ctx!.clearRect(0, 0, W, H)
+      for (let i = 0; i < nodes.length; i++) {
+        nodes[i].x += nodes[i].vx
+        nodes[i].y += nodes[i].vy
+        if (nodes[i].x < 0 || nodes[i].x > W) nodes[i].vx *= -1
+        if (nodes[i].y < 0 || nodes[i].y > H) nodes[i].vy *= -1
+      }
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x
+          const dy = nodes[i].y - nodes[j].y
+          const d = Math.sqrt(dx * dx + dy * dy)
+          if (d < 130) {
+            const al = (1 - d / 130) * 0.18
+            ctx!.beginPath()
+            ctx!.strokeStyle = nodes[i].a ? `rgba(0,229,160,${al})` : `rgba(0,102,255,${al})`
+            ctx!.lineWidth = 0.5
+            ctx!.moveTo(nodes[i].x, nodes[i].y)
+            ctx!.lineTo(nodes[j].x, nodes[j].y)
+            ctx!.stroke()
+          }
+        }
+      }
+      for (let i = 0; i < nodes.length; i++) {
+        ctx!.beginPath()
+        ctx!.arc(nodes[i].x, nodes[i].y, nodes[i].r, 0, Math.PI * 2)
+        ctx!.fillStyle = nodes[i].a ? 'rgba(0,229,160,.6)' : 'rgba(0,102,255,.6)'
+        ctx!.fill()
+      }
+      animationId = requestAnimationFrame(draw)
+    }
+
+    const handleResize = () => {
+      resize()
+      init()
+    }
+
+    window.addEventListener('resize', handleResize)
+    resize()
+    init()
+    animationId = requestAnimationFrame(draw)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      cancelAnimationFrame(animationId)
+    }
+  }, [])
+
+  const handleSvgDownload = useCallback((svgUrl: string) => {
+    const filename = svgUrl.split('/').pop()
+    if (!filename) return
+    const a = document.createElement('a')
+    a.href = svgUrl
+    a.download = filename
+    a.click()
+  }, [])
+
+  const handlePngDownload = useCallback((svgUrl: string) => {
+    const filename = svgUrl.split('/').pop()
+    if (!filename) return
+    downloadPng(svgUrl, filename)
+  }, [])
+
   return (
     <>
-      <canvas id="bg-canvas" style={{ position: 'fixed', inset: 0, zIndex: 0, opacity: 0.2, pointerEvents: 'none' }} />
+      <canvas ref={canvasRef} id="bg-canvas" style={{ position: 'fixed', inset: 0, zIndex: 0, opacity: 0.2, pointerEvents: 'none' }} />
 
       <main style={{ position: 'relative', zIndex: 1, paddingTop: '100px', paddingBottom: '100px' }}>
         <div className="section-inner">
@@ -30,13 +192,13 @@ export default function BrandPage() {
                 <circle cx="20" cy="6.5" r="1" fill="#00e5a0" opacity=".5"/>
               </svg>
             </div>
-            <h1 className="brand-title">The MemexHQ Brand</h1>
+            <h1 className="brand-title">Brand guidelines</h1>
             <p className="brand-sub">
               Resources and assets to help you work with the MemexHQ brand.
             </p>
-            <a href="/components/logo-dark.svg" download className="btn-primary" style={{ marginTop: '40px' }}>
+            <button onClick={downloadAll} className="btn-primary" style={{ marginTop: '40px', border: 'none', cursor: 'pointer' }}>
               Download all assets
-            </a>
+            </button>
           </div>
 
           <div className="brand-hero-preview">
@@ -63,9 +225,9 @@ export default function BrandPage() {
                 <div className="brand-asset-info">
                   <span className="brand-asset-name">Logo + wordmark</span>
                   <div className="brand-asset-links">
-                    <a href="/components/logo-dark.svg" download>SVG</a>
+                    <button onClick={() => handleSvgDownload('/components/logo-dark.svg')}>SVG</button>
                     <span> · </span>
-                    <a href="/components/logo-dark.svg" download>PNG</a>
+                    <button onClick={() => handlePngDownload('/components/logo-dark.svg')}>PNG</button>
                   </div>
                 </div>
               </div>
@@ -77,9 +239,9 @@ export default function BrandPage() {
                 <div className="brand-asset-info">
                   <span className="brand-asset-name">Logo mark only</span>
                   <div className="brand-asset-links">
-                    <a href="/components/logo-mark-dark.svg" download>SVG</a>
+                    <button onClick={() => handleSvgDownload('/components/logo-mark-dark.svg')}>SVG</button>
                     <span> · </span>
-                    <a href="/components/logo-mark-dark.svg" download>PNG</a>
+                    <button onClick={() => handlePngDownload('/components/logo-mark-dark.svg')}>PNG</button>
                   </div>
                 </div>
               </div>
@@ -99,9 +261,9 @@ export default function BrandPage() {
                 <div className="brand-asset-info">
                   <span className="brand-asset-name">Logo + wordmark</span>
                   <div className="brand-asset-links">
-                    <a href="/components/logo-light.svg" download>SVG</a>
+                    <button onClick={() => handleSvgDownload('/components/logo-light.svg')}>SVG</button>
                     <span> · </span>
-                    <a href="/components/logo-light.svg" download>PNG</a>
+                    <button onClick={() => handlePngDownload('/components/logo-light.svg')}>PNG</button>
                   </div>
                 </div>
               </div>
@@ -113,9 +275,9 @@ export default function BrandPage() {
                 <div className="brand-asset-info">
                   <span className="brand-asset-name">Logo mark only</span>
                   <div className="brand-asset-links">
-                    <a href="/components/logo-mark-light.svg" download>SVG</a>
+                    <button onClick={() => handleSvgDownload('/components/logo-mark-light.svg')}>SVG</button>
                     <span> · </span>
-                    <a href="/components/logo-mark-light.svg" download>PNG</a>
+                    <button onClick={() => handlePngDownload('/components/logo-mark-light.svg')}>PNG</button>
                   </div>
                 </div>
               </div>
@@ -251,9 +413,9 @@ export default function BrandPage() {
                 <div className="brand-asset-info">
                   <span className="brand-asset-name">Favicon (32×32)</span>
                   <div className="brand-asset-links">
-                    <a href="/components/favicon.svg" download>SVG</a>
+                    <button onClick={() => handleSvgDownload('/components/favicon.svg')}>SVG</button>
                     <span> · </span>
-                    <a href="/components/favicon.svg" download>PNG</a>
+                    <button onClick={() => handlePngDownload('/components/favicon.svg')}>PNG</button>
                   </div>
                 </div>
               </div>
@@ -262,43 +424,6 @@ export default function BrandPage() {
 
         </div>
       </main>
-
-      <script dangerouslySetInnerHTML={{ __html: `
-(function(){
-  var c=document.getElementById('bg-canvas'),ctx=c.getContext('2d');
-  var W,H,nodes=[];
-  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight}
-  function N(){this.x=Math.random()*W;this.y=Math.random()*H;this.vx=(Math.random()-.5)*.22;this.vy=(Math.random()-.5)*.22;this.r=Math.random()*1.8+.8;this.a=Math.random()>.5}
-  function init(){nodes=Array.from({length:55},function(){return new N()})}
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    for(var i=0;i<nodes.length;i++){
-      nodes[i].x+=nodes[i].vx;nodes[i].y+=nodes[i].vy;
-      if(nodes[i].x<0||nodes[i].x>W)nodes[i].vx*=-1;
-      if(nodes[i].y<0||nodes[i].y>H)nodes[i].vy*=-1;
-    }
-    for(var i=0;i<nodes.length;i++)for(var j=i+1;j<nodes.length;j++){
-      var dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,d=Math.sqrt(dx*dx+dy*dy);
-      if(d<130){var al=(1-d/130)*.18;
-        ctx.beginPath();
-        ctx.strokeStyle=nodes[i].a?'rgba(0,229,160,'+al+')':'rgba(0,102,255,'+al+')';
-        ctx.lineWidth=.5;
-        ctx.moveTo(nodes[i].x,nodes[i].y);
-        ctx.lineTo(nodes[j].x,nodes[j].y);
-        ctx.stroke()}
-    }
-    for(var i=0;i<nodes.length;i++){
-      ctx.beginPath();
-      ctx.arc(nodes[i].x,nodes[i].y,nodes[i].r,0,Math.PI*2);
-      ctx.fillStyle=nodes[i].a?'rgba(0,229,160,.6)':'rgba(0,102,255,.6)';
-      ctx.fill();
-    }
-    requestAnimationFrame(draw);
-  }
-  window.addEventListener('resize',function(){resize();init()});
-  resize();init();draw();
-})();
-      ` }} />
     </>
   )
 }

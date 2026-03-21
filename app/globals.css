@@ -895,12 +895,19 @@ footer {
   font-size: 10px;
   letter-spacing: 0.1em;
 }
-.brand-asset-links a {
+.brand-asset-links a,
+.brand-asset-links button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
   color: var(--accent);
+  cursor: pointer;
   text-decoration: none;
   transition: opacity 0.2s;
 }
-.brand-asset-links a:hover { opacity: 0.7; }
+.brand-asset-links a:hover,
+.brand-asset-links button:hover { opacity: 0.7; }
 
 .brand-color-grid {
   display: grid;
