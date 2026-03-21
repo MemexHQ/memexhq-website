@@ -32,7 +32,7 @@ export default function BrandPage() {
             </div>
             <h1 className="brand-title">The MemexHQ Brand</h1>
             <p className="brand-sub">
-              The MemexHQ Brand
+              Resources and assets to help you work with the MemexHQ brand.
             </p>
             <a href="/components/logo-dark.svg" download className="btn-primary" style={{ marginTop: '40px' }}>
               Download all assets
