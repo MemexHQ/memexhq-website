@@ -775,6 +775,208 @@ footer {
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s, transform 0.6s; }
 .reveal.visible { opacity: 1; transform: none; }
 
+/* ── BRAND PAGE ── */
+.brand-hero {
+  text-align: center;
+  padding: 40px 0 72px;
+}
+.brand-logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface);
+  margin-bottom: 32px;
+}
+.brand-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(36px, 4vw, 60px);
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.brand-sub {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.brand-hero-preview {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 80px;
+  overflow: hidden;
+}
+.brand-preview-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.brand-preview-dark {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.brand-preview-light {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brand-section {
+  margin-bottom: 80px;
+}
+.brand-section-title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--text);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+.brand-section-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 560px;
+  margin-bottom: 32px;
+}
+
+.brand-asset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+.brand-asset-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.brand-asset-card:hover { border-color: var(--accent); }
+.brand-preview {
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 140px;
+}
+.brand-preview img { max-width: 100%; height: auto; }
+.brand-asset-info {
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.brand-asset-name {
+  font-size: 11px;
+  color: var(--text);
+  letter-spacing: 0.04em;
+}
+.brand-asset-links {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+.brand-asset-links a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.brand-asset-links a:hover { opacity: 0.7; }
+
+.brand-color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+.brand-color-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.brand-swatch {
+  height: 72px;
+}
+.brand-color-info {
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.brand-color-name {
+  font-size: 11px;
+  color: var(--text);
+  letter-spacing: 0.04em;
+}
+.brand-color-val {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.brand-type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.brand-type-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+.brand-type-sample {
+  flex-shrink: 0;
+  width: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.brand-type-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.brand-type-name {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: 0.04em;
+}
+.brand-type-role {
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+}
+.brand-type-meta {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  margin-top: 4px;
+}
+
 /* ── RESPONSIVE ── */
 @media(max-width:960px) {
   nav { padding: 16px 24px; }

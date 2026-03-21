@@ -1,6 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Analytics } from '@vercel/analytics/next'
+import { Analytics } from '@vercel/analytics/react'
 
 export const metadata: Metadata = {
   title: 'MemexHQ — Your AI finally knows your business.',
@@ -21,7 +21,7 @@ export default function RootLayout({
       </head>
       <body>
         {children}
-        <Analytics />
+        {process.env.NEXT_PUBLIC_VERCEL_URL && <Analytics />}
       </body>
     </html>
   )
