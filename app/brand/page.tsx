@@ -30,7 +30,7 @@ export default function BrandPage() {
                 <circle cx="20" cy="6.5" r="1" fill="#00e5a0" opacity=".5"/>
               </svg>
             </div>
-            <h1 className="brand-title">Brand guidelines</h1>
+            <h1 className="brand-title">The MemexHQ Brand</h1>
             <p className="brand-sub">
               Resources and assets to help you work with MemexHQ brand.
             </p>
