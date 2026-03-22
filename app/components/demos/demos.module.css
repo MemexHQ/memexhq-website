@@ -1516,7 +1516,7 @@
 
 .cwSidebar {
   width: 210px;
-  background: #171714;
+  background: #0d1117;
   border-right: 0.5px solid rgba(255,255,255,0.07);
   padding: 14px 10px;
   flex-shrink: 0;
@@ -1580,7 +1580,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: #1f1e1a;
+  background: #0d1117;
 }
 
 .cwHeader {
@@ -1610,7 +1610,7 @@
 
 /* Task card */
 .taskCard {
-  background: #262520;
+  background: #111820;
   border: 0.5px solid rgba(255,255,255,0.09);
   border-radius: 10px;
   padding: 14px 16px;
@@ -1632,7 +1632,7 @@
 
 /* Document card */
 .docCard {
-  background: #262520;
+  background: #111820;
   border: 0.5px solid rgba(255,255,255,0.09);
   border-radius: 10px;
   overflow: hidden;
@@ -1645,7 +1645,7 @@
 }
 
 .docHdr {
-  background: #2d2c27;
+  background: #1a2332;
   padding: 10px 16px;
   border-bottom: 0.5px solid rgba(255,255,255,0.07);
   display: flex;
