@@ -512,6 +512,7 @@ section { position: relative; z-index: 1; }
 .demo-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
 .demo-pane { display: none; }
 .demo-pane.active { display: block; }
+.demo-content { margin-top: 32px; }
 
 /* ── INTEGRATIONS ── */
 .popular-ints {

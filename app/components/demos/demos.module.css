@@ -1,0 +1,2115 @@
+/* ── SHARED DEMO STYLES ── */
+.demoWrap {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* ── TERMINAL STYLES (Engineering) ── */
+.terminal {
+  background: #141414;
+  border-radius: 12px;
+  border: 0.5px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+}
+
+.titlebar {
+  background: #222;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.07);
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.dr { background: #ff5f56; }
+.dy { background: #ffbd2e; }
+.dg { background: #27c93f; }
+
+.titleCenter {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+}
+
+.pluginPill {
+  font-size: 10.5px;
+  padding: 2px 9px;
+  border-radius: 20px;
+  background: rgba(62,207,142,0.12);
+  color: #3ecf8e;
+  border: 0.5px solid rgba(62,207,142,0.3);
+}
+
+.screen {
+  padding: 20px 22px 22px;
+  height: 480px;
+  max-height: 480px;
+  overflow-y: auto;
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  scroll-behavior: smooth;
+}
+
+.line {
+  font-size: 13px;
+  line-height: 1;
+  margin-bottom: 0;
+  color: #e0e0e0;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.ps {
+  color: #3ecf8e;
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: #e0e0e0;
+  vertical-align: middle;
+  animation: blink 0.9s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.spacer { height: 14px; }
+.spacerSm { height: 8px; }
+
+.comment {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  margin: 12px 0 6px;
+}
+
+.node {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 5px 0;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.node.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.tag {
+  font-size: 10.5px;
+  padding: 1px 7px;
+  border-radius: 3px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-weight: 500;
+}
+
+.tgh { background: rgba(139,92,246,0.2); color: #b39dfa; border: 0.5px solid rgba(139,92,246,0.3); }
+.tjr { background: rgba(59,130,246,0.2); color: #7cb9fb; border: 0.5px solid rgba(59,130,246,0.3); }
+.tsd { background: rgba(251,191,36,0.15); color: #fbbf24; border: 0.5px solid rgba(251,191,36,0.25); }
+.tcc { background: rgba(62,207,142,0.15); color: #3ecf8e; border: 0.5px solid rgba(62,207,142,0.3); }
+
+/* Sales demo tags */
+.tgong { background: rgba(249,115,22,0.18); color: #fb923c; border: 0.5px solid rgba(249,115,22,0.3); }
+.tsf { background: rgba(14,165,233,0.18); color: #38bdf8; border: 0.5px solid rgba(14,165,233,0.3); }
+.tslack { background: rgba(74,222,128,0.15); color: #4ade80; border: 0.5px solid rgba(74,222,128,0.25); }
+.tnotion { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.55); border: 0.5px solid rgba(255,255,255,0.15); }
+
+/* Product demo tags */
+.tprd { background: rgba(139,92,246,0.2); color: #b39dfa; border: 0.5px solid rgba(139,92,246,0.3); }
+.tjira { background: rgba(59,130,246,0.2); color: #7cb9fb; border: 0.5px solid rgba(59,130,246,0.3); }
+
+/* DevOps demo tags */
+.trunbook { background: rgba(139,92,246,0.18); color: #b39dfa; border: 0.5px solid rgba(139,92,246,0.3); }
+
+/* HR demo tags */
+.thr { background: rgba(167,139,250,0.14); color: #a78bfa; border: 0.5px solid rgba(167,139,250,0.25); }
+.tmeet { background: rgba(96,165,250,0.14); color: #60a5fa; border: 0.5px solid rgba(96,165,250,0.22); }
+
+.nodeBody {
+  color: rgba(255,255,255,0.6);
+}
+
+.nodeBody b {
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+
+.enrichedBox {
+  background: rgba(62,207,142,0.05);
+  border: 0.5px solid rgba(62,207,142,0.2);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin: 10px 0;
+  font-size: 12px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.55);
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.enrichedBox.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hl { color: #3ecf8e; }
+.q { color: rgba(255,255,255,0.8); }
+
+.resultBlock {
+  margin: 10px 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.resultBlock.show {
+  opacity: 1;
+}
+
+.resultLabel {
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.code {
+  background: rgba(255,255,255,0.03);
+  border: 0.5px solid rgba(255,255,255,0.07);
+  border-radius: 7px;
+  padding: 12px 14px;
+}
+
+.cl {
+  font-size: 12px;
+  line-height: 1.85;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.cl.show {
+  opacity: 1;
+}
+
+.kw { color: #c792ea; }
+.fn { color: #82aaff; }
+.st { color: #c3e88d; }
+.cm { color: rgba(255,255,255,0.25); }
+.nm { color: #f78c6c; }
+
+.statusbar {
+  background: rgba(255,255,255,0.025);
+  border-top: 0.5px solid rgba(255,255,255,0.06);
+  padding: 7px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.25);
+}
+
+.sdot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3ecf8e;
+  flex-shrink: 0;
+  animation: glow 2s ease infinite;
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.ml { margin-left: auto; }
+
+.divider {
+  border: none;
+  border-top: 0.5px solid rgba(255,255,255,0.07);
+  margin: 13px 0;
+}
+
+.replay {
+  display: block;
+  margin: 16px auto 2px;
+  background: transparent;
+  border: 0.5px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.35);
+  font-family: inherit;
+  font-size: 11px;
+  padding: 6px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.replay:hover {
+  border-color: #3ecf8e;
+  color: #3ecf8e;
+}
+
+/* ── BROWSER STYLES (Marketing, Sales) ── */
+.browser {
+  background: #1a1a1a;
+  border-radius: 14px;
+  border: 0.5px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+}
+
+.browserBar {
+  background: #242424;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.07);
+}
+
+.urlBar {
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  border: 0.5px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.3);
+  font-family: monospace;
+}
+
+/* ── CHAT UI STYLES ── */
+.chatUi {
+  display: flex;
+  height: 560px;
+}
+
+.sidebar {
+  width: 200px;
+  background: #111;
+  border-right: 0.5px solid rgba(255,255,255,0.06);
+  padding: 14px 10px;
+  flex-shrink: 0;
+}
+
+.sidebarLogo {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  padding: 0 6px;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebarLogo span {
+  color: #d97706;
+}
+
+.newChat {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 0.5px solid rgba(255,255,255,0.1);
+  border-radius: 7px;
+  padding: 7px 10px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  text-align: left;
+  cursor: pointer;
+  margin-bottom: 14px;
+}
+
+.chatItem {
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.35);
+  cursor: pointer;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chatItem.active {
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.65);
+}
+
+.chatMain {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #161616;
+}
+
+.chatHeader {
+  padding: 12px 18px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chatModel {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+}
+
+.memexStatus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #3ecf8e;
+}
+
+.messages {
+  flex: 1;
+  height: 400px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scroll-behavior: smooth;
+}
+
+.msgUser {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bubbleUser {
+  background: rgba(255,255,255,0.08);
+  border: 0.5px solid rgba(255,255,255,0.1);
+  border-radius: 14px 14px 3px 14px;
+  padding: 9px 13px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  max-width: 75%;
+  line-height: 1.5;
+}
+
+.cursorInline {
+  display: inline-block;
+  width: 2px;
+  height: 14px;
+  background: rgba(255,255,255,0.7);
+  vertical-align: middle;
+  margin-left: 1px;
+  animation: blink 0.9s step-end infinite;
+}
+
+/* Context panel */
+.ctxPanel {
+  background: rgba(62,207,142,0.05);
+  border: 0.5px solid rgba(62,207,142,0.2);
+  border-radius: 10px;
+  padding: 11px 13px;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.ctxPanel.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ctxHeader {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 9px;
+  font-size: 11px;
+  color: rgba(62,207,142,0.8);
+}
+
+.ctxIcon { font-size: 13px; }
+.ctxCount { margin-left: auto; color: rgba(62,207,142,0.5); font-size: 10.5px; }
+
+.ctxNode {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 6px 0;
+  border-top: 0.5px solid rgba(255,255,255,0.05);
+  opacity: 0;
+  transform: translateX(-5px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.ctxNode.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.ctag {
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-weight: 500;
+}
+
+.ctxText {
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.5;
+}
+
+.ctxText b {
+  color: rgba(255,255,255,0.8);
+  font-weight: 500;
+}
+
+/* Enriched prompt in chat */
+.enriched {
+  background: rgba(255,255,255,0.03);
+  border: 0.5px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 10px 13px;
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.65;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.enriched.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.elabel {
+  font-size: 10px;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.qt { color: rgba(255,255,255,0.7); }
+
+/* Assistant message */
+.msgAssistant {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #2a2a2a;
+  border: 0.5px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.bubbleAssistant {
+  flex: 1;
+}
+
+/* Post card (Marketing demo) */
+.postCard {
+  background: #1e1e1e;
+  border: 0.5px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.postCard.show {
+  opacity: 1;
+}
+
+.postHeader {
+  padding: 10px 13px 8px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.07);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.liAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #0077b5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.postAuthor {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+}
+
+.postTitleSm {
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.3);
+}
+
+.liLogo {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 700;
+  color: #0a66c2;
+  background: rgba(10,102,194,0.15);
+  padding: 2px 7px;
+  border-radius: 3px;
+}
+
+.postBody {
+  padding: 12px 13px 10px;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.65);
+}
+
+.postLine {
+  display: block;
+  min-height: 1.7em;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.postLine.show {
+  opacity: 1;
+}
+
+.bold { color: rgba(255,255,255,0.85); font-weight: 500; }
+.tagText { color: #0a66c2; }
+
+.postFooter {
+  padding: 8px 13px;
+  border-top: 0.5px solid rgba(255,255,255,0.07);
+  display: flex;
+  gap: 16px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.2);
+}
+
+.assistNote {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.6;
+  padding: 6px 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.assistNote.show {
+  opacity: 1;
+}
+
+/* Input bar */
+.inputBar {
+  padding: 12px 16px;
+  border-top: 0.5px solid rgba(255,255,255,0.06);
+}
+
+.inputRow {
+  background: rgba(255,255,255,0.05);
+  border: 0.5px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 9px 13px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.inputText {
+  flex: 1;
+  font-size: 13px;
+  color: rgba(255,255,255,0.25);
+}
+
+.sendBtn {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: rgba(255,255,255,0.25);
+}
+
+/* ── ChatGPT/GPT Styles (Sales) ── */
+.gptSidebar {
+  width: 200px;
+  background: #171717;
+  border-right: 0.5px solid rgba(255,255,255,0.06);
+  padding: 12px 8px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sbLogo {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+  padding: 4px 8px 12px;
+  letter-spacing: -0.3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gptIcon {
+  width: 22px;
+  height: 22px;
+  background: #10a37f;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #fff;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.sbNew {
+  background: transparent;
+  border: 0.5px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  text-align: left;
+  cursor: pointer;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sbSection {
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+  padding: 8px 8px 4px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.sbItem {
+  padding: 6px 8px;
+  border-radius: 7px;
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sbItem.active {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.75);
+}
+
+.gptMain {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #212121;
+}
+
+.gptTop {
+  padding: 11px 18px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modelSel {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.55);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.memexBadge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: #3ecf8e;
+}
+
+.mbdot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #3ecf8e;
+  animation: glow 2s ease infinite;
+}
+
+.gptMessages {
+  flex: 1;
+  height: 400px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 20px 20px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  scroll-behavior: smooth;
+}
+
+.msgUserGpt {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bubbleUGpt {
+  background: #2f2f2f;
+  border-radius: 18px 18px 4px 18px;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.9);
+  max-width: 72%;
+  line-height: 1.5;
+}
+
+/* Email card (Sales demo) */
+.emailCard {
+  background: #2a2a2a;
+  border: 0.5px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.emailCard.show {
+  opacity: 1;
+}
+
+.emailHdr {
+  padding: 10px 14px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.07);
+}
+
+.emailField {
+  display: flex;
+  gap: 8px;
+  font-size: 11.5px;
+  margin-bottom: 4px;
+}
+
+.emailLabel {
+  color: rgba(255,255,255,0.25);
+  width: 36px;
+  flex-shrink: 0;
+}
+
+.emailVal {
+  color: rgba(255,255,255,0.65);
+}
+
+.emailSubject {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  margin-top: 8px;
+}
+
+.emailBodyWrap {
+  padding: 12px 14px 14px;
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.75;
+}
+
+.emailLine {
+  display: block;
+  min-height: 1.75em;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.emailLine.show {
+  opacity: 1;
+}
+
+.emailBold {
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+
+/* ── CODEX/AGENT STYLES (Product) ── */
+.codexUi {
+  display: flex;
+  height: 600px;
+}
+
+.codexSidebar {
+  width: 210px;
+  background: #0d0d0d;
+  border-right: 0.5px solid rgba(255,255,255,0.07);
+  padding: 14px 10px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cxLogo {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  padding: 0 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cxIcon {
+  width: 22px;
+  height: 22px;
+  background: #1a1a1a;
+  border: 0.5px solid rgba(255,255,255,0.15);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.cxSection {
+  font-size: 10px;
+  color: rgba(255,255,255,0.2);
+  padding: 8px 6px 4px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.cxItem {
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.35);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.cxItem.active {
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.7);
+}
+
+.cxDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cxDot.run {
+  background: #3ecf8e;
+  animation: glow 2s ease infinite;
+}
+
+.cxDot.done {
+  background: rgba(255,255,255,0.2);
+}
+
+.codexMain {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #111;
+}
+
+.cxHeader {
+  padding: 11px 18px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cxTitle {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+}
+
+.cxTaskArea {
+  padding: 16px 20px 12px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.06);
+}
+
+.cxTaskLabel {
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.cxTaskBox {
+  background: rgba(255,255,255,0.04);
+  border: 0.5px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 11px 13px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.5;
+  min-height: 44px;
+}
+
+.cxRunBtn {
+  margin-top: 8px;
+  background: rgba(255,255,255,0.07);
+  border: 0.5px solid rgba(255,255,255,0.12);
+  border-radius: 7px;
+  padding: 7px 16px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.cxOutput {
+  flex: 1;
+  height: 350px;
+  max-height: 350px;
+  overflow-y: auto;
+  padding: 14px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scroll-behavior: smooth;
+}
+
+.scanLine {
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.3);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.scanLine.show {
+  opacity: 1;
+}
+
+/* Agent steps */
+.agentSteps {
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.agentSteps.show {
+  opacity: 1;
+}
+
+.stepLabel {
+  font-size: 10px;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.step {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 6px;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.step.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.stepIcon {
+  font-size: 11px;
+  margin-top: 1px;
+  flex-shrink: 0;
+  width: 16px;
+  text-align: center;
+}
+
+.stepText {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.5;
+}
+
+.stepText b {
+  color: rgba(255,255,255,0.85);
+}
+
+.stepDone { color: #3ecf8e; }
+.stepRun { color: #fbbf24; }
+
+/* Spec block */
+.specBlock {
+  background: rgba(255,255,255,0.03);
+  border: 0.5px solid rgba(255,255,255,0.07);
+  border-radius: 8px;
+  padding: 12px 14px;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.specBlock.show {
+  opacity: 1;
+}
+
+.specLabel {
+  font-size: 10px;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.specLine {
+  display: block;
+  font-size: 12px;
+  line-height: 1.8;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.specLine.show {
+  opacity: 1;
+}
+
+/* ── GITHUB/PR REVIEW STYLES (DevOps) ── */
+.ghUi {
+  display: flex;
+  flex-direction: column;
+}
+
+.repoHeader {
+  background: #161b22;
+  padding: 12px 20px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ghIcon {
+  font-size: 18px;
+  color: rgba(255,255,255,0.6);
+}
+
+.repoPath {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+}
+
+.repoPath .org {
+  color: rgba(255,255,255,0.45);
+}
+
+.repoPath .sep {
+  color: rgba(255,255,255,0.25);
+  margin: 0 4px;
+}
+
+.repoTab {
+  font-size: 12.5px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  color: rgba(255,255,255,0.45);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.repoTab.active {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.8);
+  border: 0.5px solid rgba(255,255,255,0.15);
+}
+
+.prView {
+  display: flex;
+  height: 540px;
+}
+
+.prList {
+  width: 220px;
+  border-right: 0.5px solid rgba(255,255,255,0.08);
+  background: #0d1117;
+  overflow-y: auto;
+}
+
+.prListHdr {
+  padding: 10px 14px;
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.4);
+  border-bottom: 0.5px solid rgba(255,255,255,0.06);
+  display: flex;
+  justify-content: space-between;
+}
+
+.prItem {
+  padding: 10px 14px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.05);
+  cursor: pointer;
+}
+
+.prItem.active {
+  background: rgba(255,255,255,0.04);
+}
+
+.prItemTitle {
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 4px;
+}
+
+.prItem.active .prItemTitle {
+  color: rgba(255,255,255,0.9);
+}
+
+.prItemMeta {
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.25);
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.prStatus {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3fb950;
+  flex-shrink: 0;
+}
+
+.prStatus.draft {
+  background: rgba(255,255,255,0.2);
+}
+
+.prDetail {
+  flex: 1;
+  height: 360px;
+  max-height: 360px;
+  overflow-y: auto;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth;
+}
+
+.prTitleBig {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.4;
+}
+
+.prMetaRow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.prBadge {
+  font-size: 11px;
+  padding: 2px 9px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.prOpen {
+  background: rgba(63,185,80,0.15);
+  color: #3fb950;
+  border: 0.5px solid rgba(63,185,80,0.3);
+}
+
+.prAuthor {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+}
+
+.prDesc {
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  background: rgba(255,255,255,0.03);
+  border: 0.5px solid rgba(255,255,255,0.07);
+  border-radius: 8px;
+  padding: 11px 13px;
+}
+
+.diffBlock {
+  background: #0d1117;
+  border: 0.5px solid rgba(255,255,255,0.08);
+  border-radius: 7px;
+  overflow: hidden;
+  font-family: 'SF Mono', monospace;
+  font-size: 11.5px;
+}
+
+.diffHdr {
+  background: #161b22;
+  padding: 6px 12px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  border-bottom: 0.5px solid rgba(255,255,255,0.06);
+}
+
+.diffLine {
+  padding: 1px 12px;
+  line-height: 1.7;
+}
+
+.diffAdd {
+  background: rgba(63,185,80,0.1);
+  color: #3fb950;
+}
+
+.diffDel {
+  background: rgba(248,81,73,0.1);
+  color: #f85149;
+}
+
+.diffCtx {
+  color: rgba(255,255,255,0.35);
+}
+
+/* Copilot panel */
+.copilotPanel {
+  width: 280px;
+  border-left: 0.5px solid rgba(255,255,255,0.08);
+  background: #0d1117;
+  display: flex;
+  flex-direction: column;
+}
+
+.copilotHdr {
+  padding: 11px 14px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.copilotLogo {
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #6e40c9, #1f6feb);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #fff;
+}
+
+.copilotTitle {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.65);
+}
+
+.copilotMsgs {
+  flex: 1;
+  height: 300px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scroll-behavior: smooth;
+}
+
+.cpMsgU {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cpBubbleU {
+  background: #1f6feb;
+  border-radius: 12px 12px 3px 12px;
+  padding: 7px 10px;
+  font-size: 12px;
+  color: #fff;
+  max-width: 85%;
+  line-height: 1.45;
+}
+
+.cpMsgA {
+  display: flex;
+  gap: 7px;
+  align-items: flex-start;
+}
+
+.cpAv {
+  width: 22px;
+  height: 22px;
+  background: linear-gradient(135deg, #6e40c9, #1f6feb);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #fff;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.cpBubbleA {
+  background: rgba(255,255,255,0.05);
+  border: 0.5px solid rgba(255,255,255,0.1);
+  border-radius: 3px 12px 12px 12px;
+  padding: 7px 10px;
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.cpScan {
+  font-size: 10.5px;
+  color: rgba(62,207,142,0.6);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.cpScan.show {
+  opacity: 1;
+}
+
+/* DevOps context panel */
+.ctxNodeDevops {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 5px 0;
+  border-top: 0.5px solid rgba(255,255,255,0.05);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.ctxNodeDevops.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.ntagDevops {
+  font-size: 9.5px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  white-space: nowrap;
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 1px;
+  font-weight: 500;
+}
+
+.tGh { background: rgba(63,185,80,0.18); color: #3fb950; border: 0.5px solid rgba(63,185,80,0.3); }
+
+.respLines {
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.65;
+}
+
+.respLine {
+  display: block;
+  min-height: 1.65em;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.respLine.show {
+  opacity: 1;
+}
+
+.respHl {
+  color: #3fb950;
+  font-weight: 500;
+}
+
+.copilotInput {
+  padding: 10px 12px;
+  border-top: 0.5px solid rgba(255,255,255,0.06);
+}
+
+.cpInputRow {
+  background: rgba(255,255,255,0.05);
+  border: 0.5px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.2);
+}
+
+/* ── COWORK/WORKSPACE STYLES (HR) ── */
+.cwUi {
+  display: flex;
+  height: 580px;
+}
+
+.cwSidebar {
+  width: 210px;
+  background: #171714;
+  border-right: 0.5px solid rgba(255,255,255,0.07);
+  padding: 14px 10px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cwLogo {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.75);
+  padding: 0 6px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cwIcon {
+  width: 22px;
+  height: 22px;
+  background: #d97706;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.cwSection {
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+  padding: 8px 6px 4px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.cwItem {
+  padding: 6px 8px;
+  border-radius: 7px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.38);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.cwItem.active {
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.78);
+}
+
+.cwItemIcon {
+  font-size: 13px;
+}
+
+.cwMain {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #1f1e1a;
+}
+
+.cwHeader {
+  padding: 12px 20px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cwTitle {
+  font-size: 13px;
+  color: rgba(255,255,255,0.38);
+}
+
+.cwWorkspace {
+  flex: 1;
+  height: 400px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  scroll-behavior: smooth;
+}
+
+/* Task card */
+.taskCard {
+  background: #262520;
+  border: 0.5px solid rgba(255,255,255,0.09);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.taskLabel {
+  font-size: 10px;
+  color: rgba(255,255,255,0.28);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.taskText {
+  font-size: 14px;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.5;
+}
+
+/* Document card */
+.docCard {
+  background: #262520;
+  border: 0.5px solid rgba(255,255,255,0.09);
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.docCard.show {
+  opacity: 1;
+}
+
+.docHdr {
+  background: #2d2c27;
+  padding: 10px 16px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.07);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.docIcon {
+  font-size: 16px;
+}
+
+.docMeta {
+  flex: 1;
+}
+
+.docTitleSm {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+}
+
+.docSubtitle {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+}
+
+.docBadge {
+  font-size: 10.5px;
+  padding: 2px 9px;
+  border-radius: 20px;
+  background: rgba(217,119,6,0.15);
+  color: #d97706;
+  border: 0.5px solid rgba(217,119,6,0.3);
+}
+
+.docBody {
+  padding: 14px 16px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.8;
+}
+
+.docLine {
+  display: block;
+  min-height: 1.8em;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.docLine.show {
+  opacity: 1;
+}
+
+.docBold {
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+
+.docSection {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.28);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 14px;
+  margin-bottom: 4px;
+}
+
+.docSection:first-child {
+  margin-top: 0;
+}
+
+.docCheck {
+  color: #3ecf8e;
+  margin-right: 6px;
+}
+
+/* Closing note (HR) */
+.assistNoteHr {
+  font-size: 12px;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.6;
+  background: rgba(62,207,142,0.05);
+  border-radius: 8px;
+  padding: 10px 13px;
+  border: 0.5px solid rgba(62,207,142,0.15);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.assistNoteHr.show {
+  opacity: 1;
+}
+
+.cwInputBar {
+  padding: 12px 16px;
+  border-top: 0.5px solid rgba(255,255,255,0.07);
+}
+
+.cwInputRow {
+  background: rgba(255,255,255,0.05);
+  border: 0.5px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 9px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cwInputPh {
+  flex: 1;
+  font-size: 13px;
+  color: rgba(255,255,255,0.2);
+}
+
+.sendIcon {
+  width: 26px;
+  height: 26px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: rgba(255,255,255,0.28);
+}
+
+/* Logo images in demos */
+.logoImg {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* ── MOBILE RESPONSIVENESS ── */
+@media (max-width: 768px) {
+  .demoWrap {
+    max-width: 100%;
+    padding: 0 8px;
+  }
+
+  /* Terminal (Engineering) */
+  .screen {
+    padding: 14px 12px 16px;
+    min-height: 400px;
+    font-size: 11px;
+  }
+
+  .titlebar {
+    padding: 8px 12px;
+  }
+
+  .titleCenter {
+    font-size: 10px;
+    display: none;
+  }
+
+  .pluginPill {
+    font-size: 9px;
+    padding: 2px 7px;
+  }
+
+  .statusbar {
+    padding: 6px 12px;
+    font-size: 9px;
+  }
+
+  .node {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .tag {
+    font-size: 9px;
+  }
+
+  .nodeBody {
+    font-size: 11px;
+  }
+
+  .code {
+    padding: 10px;
+    overflow-x: auto;
+  }
+
+  .cl {
+    font-size: 10px;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  /* Browser demos (Marketing, Sales) */
+  .chatUi {
+    flex-direction: column;
+    height: auto;
+    min-height: 500px;
+  }
+
+  .sidebar,
+  .gptSidebar {
+    display: none;
+  }
+
+  .chatMain,
+  .gptMain {
+    width: 100%;
+  }
+
+  .messages,
+  .gptMessages {
+    padding: 14px 12px;
+    min-height: 400px;
+  }
+
+  .bubbleUser,
+  .bubbleUGpt {
+    max-width: 90%;
+    font-size: 12px;
+    padding: 8px 11px;
+  }
+
+  .ctxPanel {
+    padding: 9px 10px;
+  }
+
+  .ctxNode {
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .ctag {
+    font-size: 9px;
+  }
+
+  .ctxText {
+    font-size: 10.5px;
+  }
+
+  .enriched {
+    padding: 8px 10px;
+    font-size: 10.5px;
+  }
+
+  .postCard,
+  .emailCard {
+    font-size: 11px;
+  }
+
+  .postBody,
+  .emailBodyWrap {
+    padding: 10px;
+    font-size: 11px;
+  }
+
+  .inputBar,
+  .inputRow {
+    padding: 10px 12px;
+  }
+
+  /* Codex demo (Product) */
+  .codexUi {
+    flex-direction: column;
+    height: auto;
+    min-height: 500px;
+  }
+
+  .codexSidebar {
+    display: none;
+  }
+
+  .codexMain {
+    width: 100%;
+  }
+
+  .cxTaskArea {
+    padding: 12px 14px;
+  }
+
+  .cxTaskBox {
+    font-size: 12px;
+    padding: 9px 11px;
+  }
+
+  .cxOutput {
+    padding: 12px 14px;
+    min-height: 350px;
+  }
+
+  .step {
+    gap: 6px;
+  }
+
+  .stepText {
+    font-size: 11px;
+  }
+
+  .specBlock {
+    padding: 10px;
+  }
+
+  .specLine {
+    font-size: 10px;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  /* GitHub demo (DevOps) */
+  .ghUi {
+    flex-direction: column;
+  }
+
+  .repoHeader {
+    padding: 10px 12px;
+    flex-wrap: wrap;
+  }
+
+  .repoTab {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  .prView {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .prList {
+    display: none;
+  }
+
+  .prDetail {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .prTitleBig {
+    font-size: 14px;
+  }
+
+  .diffBlock {
+    font-size: 10px;
+    overflow-x: auto;
+  }
+
+  .diffLine {
+    padding: 1px 8px;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .copilotPanel {
+    width: 100%;
+    border-left: none;
+    border-top: 0.5px solid rgba(255,255,255,0.08);
+    min-height: 350px;
+  }
+
+  .copilotMsgs {
+    padding: 10px;
+    min-height: 250px;
+  }
+
+  .cpBubbleU,
+  .cpBubbleA {
+    font-size: 11px;
+    padding: 6px 9px;
+  }
+
+  .respLines {
+    font-size: 10.5px;
+  }
+
+  /* CoWork demo (HR) */
+  .cwUi {
+    flex-direction: column;
+    height: auto;
+    min-height: 500px;
+  }
+
+  .cwSidebar {
+    display: none;
+  }
+
+  .cwMain {
+    width: 100%;
+  }
+
+  .cwWorkspace {
+    padding: 14px 12px;
+    min-height: 400px;
+  }
+
+  .taskCard {
+    padding: 12px 14px;
+  }
+
+  .taskText {
+    font-size: 12px;
+  }
+
+  .docCard {
+    font-size: 12px;
+  }
+
+  .docHdr {
+    padding: 8px 12px;
+  }
+
+  .docBody {
+    padding: 12px;
+    font-size: 12px;
+  }
+
+  .docBadge {
+    font-size: 9px;
+    padding: 2px 7px;
+  }
+}
+
+@media (max-width: 480px) {
+  .demoWrap {
+    padding: 0 4px;
+  }
+
+  .screen {
+    padding: 10px 8px 12px;
+    min-height: 350px;
+  }
+
+  .dots {
+    gap: 4px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .node {
+    font-size: 10px;
+  }
+
+  .chatHeader,
+  .gptTop,
+  .cxHeader,
+  .cwHeader {
+    padding: 8px 12px;
+  }
+
+  .chatModel,
+  .modelSel,
+  .cxTitle,
+  .cwTitle {
+    font-size: 11px;
+  }
+
+  .memexStatus,
+  .memexBadge {
+    font-size: 10px;
+  }
+
+  .replay {
+    font-size: 10px;
+    padding: 5px 14px;
+  }
+}

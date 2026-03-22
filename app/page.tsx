@@ -1,6 +1,14 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import {
+  EngineeringDemo,
+  MarketingDemo,
+  SalesDemo,
+  ProductDemo,
+  DevOpsDemo,
+  HRDemo
+} from './components/demos'
 
 export default function Home() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -169,77 +177,6 @@ export default function Home() {
     }
     setIsSubmitting(false)
   }
-
-  const demos = {
-    engineering: {
-      cmd: 'claude-code "implement rate limiting for the /auth endpoint"',
-      ctx: [
-        { source: 'GitHub · 3d ago', text: 'PR #412 reverted Redis-based rate limiter — latency spike under 500 rps. Root cause: connection pool misconfigured.' },
-        { source: 'Jira · SPRINT-88', text: 'Auth hardening is P0 this sprint. Requirement: 100 req/min per user, sliding window.' },
-        { source: 'Standup · Tue', text: 'Team agreed token bucket over leaky bucket after benchmarking.' },
-        { source: 'Claude Code · 7d ago', text: 'Existing middleware pattern in src/middleware/throttle.ts.' }
-      ],
-      enriched: '"Implement rate limiting for /auth. Use token bucket (100 req/min/user, sliding window). Avoid Redis connection pool — prefer in-memory with periodic flush. Extend existing pattern at src/middleware/throttle.ts. Previous attempt PR #412 failed due to pool config."',
-      result: 'Production-ready implementation on first attempt. No back-and-forth, no rediscovering past failures. The AI knew what failed and why.'
-    },
-    marketing: {
-      cmd: 'chatgpt "write a LinkedIn post announcing our enterprise tier"',
-      ctx: [
-        { source: 'Salesforce · Stripe call · 2d ago', text: 'Main objection: SSO and audit logs missing. Enterprise tier resolves this.' },
-        { source: 'PRD · v2.4', text: 'Enterprise includes SAML SSO, RBAC, 90-day audit log, SLA 99.9%.' },
-        { source: 'Slack · #marketing', text: 'Positioning agreed: lead with security and compliance, not feature count.' },
-        { source: 'Gong · Notion call', text: 'Competing against Glean — differentiate on local-only deployment.' }
-      ],
-      enriched: '"Announce enterprise tier on LinkedIn. Lead with security: SAML SSO, audit logs, local deployment. Target CTOs/security teams. Differentiator vs Glean: zero cloud egress. Tone: confident, technical, not salesy. Agreed positioning: compliance first."',
-      result: 'Post hits exact positioning with real product detail. No hallucinated features, no generic copy. Drafted in one shot.'
-    },
-    sales: {
-      cmd: 'chatgpt "prep me for tomorrow\'s call with Acme Corp"',
-      ctx: [
-        { source: 'Salesforce · 3w ago', text: 'Champion: VP Eng. Budget approved. Blocker: legal wants data residency guarantee.' },
-        { source: 'Gmail thread', text: 'DPA sent 10 days ago — no reply, follow up critical.' },
-        { source: 'Jira · SALES-44', text: 'Custom SLA doc in progress, ETA this Friday.' },
-        { source: 'Slack · #deals', text: 'Glean pitched them last week. They liked our local-only story.' }
-      ],
-      enriched: '"Prep Acme Corp call. Primary blocker: DPA / data residency — follow up on unanswered email. SLA doc ready this week, mention ETA. Champion: VP Eng with budget approved. Lead with local-only deployment story to counter Glean. Ask about legal team timeline."',
-      result: 'Sharp, context-loaded call brief assembled from Slack, Gmail, Jira, and Salesforce automatically. 30-second read instead of 45 minutes of manual research.'
-    },
-    product: {
-      cmd: 'chatgpt "write the PRD for the notification system"',
-      ctx: [
-        { source: 'Gong · Stripe call', text: 'Client explicitly requested webhook support for notification events.' },
-        { source: 'Linear · ENG-203', text: 'Real-time push out of scope Q3 due to infrastructure cost.' },
-        { source: 'Gong · 3 recent calls', text: 'Competitor X shipped push notifications — mentioned as gap by multiple prospects.' },
-        { source: 'Confluence · March', text: 'Previous RFC for notification system abandoned — infra cost estimate too high.' }
-      ],
-      enriched: '"PRD: notification system. Must-have: webhooks (client requirement, Stripe call). Out of scope Q3: real-time push (ENG-203). Competitive gap: push notifications — 3 recent sales mentions. Previous RFC failed on infra cost — avoid similar scope."',
-      result: 'PRD with full business, technical, and competitive context. No assumptions. No rediscovering past decisions. First draft is already aligned with engineering, sales, and clients.'
-    },
-    devops: {
-      cmd: 'chatgpt "why did production go down at 23:14 last night?"',
-      ctx: [
-        { source: 'GitHub · yesterday 23:14', text: 'Deploy by @ravi — payment service updated to v2.3.1.' },
-        { source: 'Notion · 2w ago', text: 'Postmortem: v2.3.0 had connection pool exhaustion under load. Same service.' },
-        { source: 'PagerDuty', text: 'Same failure pattern as November outage — payment service timeout cascade.' },
-        { source: 'Confluence · runbook', text: 'Payment service recovery: restart pool, flush cache, confirm DB connections.' }
-      ],
-      enriched: '"Production incident 23:14. Deploy: payment-service v2.3.1 by @ravi. Known pattern: connection pool exhaustion (postmortem 2w ago, same service). Similar to November outage. Runbook: restart pool, flush cache, confirm DB. On-call: @priya."',
-      result: 'Root cause identified in minutes, not hours. Runbook surfaced automatically. Team skips the 45-minute investigation and goes straight to the fix.'
-    },
-    onboarding: {
-      cmd: 'chatgpt "draft onboarding plan for new backend engineer joining Monday"',
-      ctx: [
-        { source: 'GitHub', text: 'Stack: Node.js, Postgres, Redis, GCP. Current active repos: api-core, auth-service, payment-service.' },
-        { source: 'Linear · SPRINT-88', text: 'Current sprint: auth hardening. New hire likely touching auth-service week 1.' },
-        { source: 'Notion · onboarding feedback', text: 'Last 3 hires flagged: deployment process unclear, legacy payment service undocumented, RFC process unknown.' },
-        { source: 'Slack · #engineering', text: 'Team norm: async-first, decisions in Linear not Slack, PRs reviewed within 24h.' }
-      ],
-      enriched: '"Onboarding plan: backend engineer. Stack: Node/Postgres/Redis/GCP. Week 1 context: auth hardening sprint. Known gaps from past hires: deployment docs, payment-service, RFC process. Team norms: async-first, Linear for decisions. Key contact: @rohan (backend architecture)."',
-      result: 'Onboarding plan that addresses real gaps, references live sprint context, and reflects actual team norms. Not a generic checklist — a plan that reflects your company.'
-    }
-  }
-
-  const currentDemo = demos[activeTab as keyof typeof demos]
 
   return (
     <>
@@ -447,39 +384,24 @@ export default function Home() {
               <h2 className="section-h reveal">Context in action</h2>
             </div>
             <div className="demo-tabs">
-              {['engineering', 'marketing', 'sales', 'product', 'devops', 'onboarding'].map(tab => (
+              {['engineering', 'marketing', 'sales', 'product', 'devops', 'hr'].map(tab => (
                 <button
                   key={tab}
                   className={`demo-tab ${activeTab === tab ? 'active' : ''}`}
                   onClick={() => setActiveTab(tab)}
                 >
-                  {tab === 'onboarding' ? 'HR / Onboarding' : tab.charAt(0).toUpperCase() + tab.slice(1)}
+                  {tab === 'hr' ? 'HR / Onboarding' : tab.charAt(0).toUpperCase() + tab.slice(1)}
                 </button>
               ))}
             </div>
           </div>
-          <div className="terminal-wrap">
-            <div className="terminal-bar">
-              <span className="t-dot r"></span><span className="t-dot y"></span><span className="t-dot g"></span>
-              <span className="t-title">memexhq · context enrichment · live</span>
-            </div>
-            <div className="terminal-body">
-              <div className="t-line"><span className="t-prompt">$</span><span className="t-cmd">{currentDemo.cmd}</span></div>
-              <div className="t-block ctx">
-                <div className="t-tag ctx">// context retrieved — {currentDemo.ctx.length} nodes matched</div>
-                <p>{currentDemo.ctx.map((c, i) => (
-                  <span key={i}><strong>[{c.source}]</strong> {c.text}<br/></span>
-                ))}</p>
-              </div>
-              <div className="t-block rag">
-                <div className="t-tag rag">// enriched prompt sent to AI</div>
-                <p>{currentDemo.enriched}</p>
-              </div>
-              <div className="t-block out">
-                <div className="t-tag out">// result</div>
-                <p>{currentDemo.result}</p>
-              </div>
-            </div>
+          <div className="demo-content">
+            {activeTab === 'engineering' && <EngineeringDemo />}
+            {activeTab === 'marketing' && <MarketingDemo />}
+            {activeTab === 'sales' && <SalesDemo />}
+            {activeTab === 'product' && <ProductDemo />}
+            {activeTab === 'devops' && <DevOpsDemo />}
+            {activeTab === 'hr' && <HRDemo />}
           </div>
         </div>
       </section>

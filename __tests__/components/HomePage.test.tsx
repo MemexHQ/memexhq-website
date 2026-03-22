@@ -241,9 +241,10 @@ describe('HomePage', () => {
   })
 
   describe('Tab Switching (Demo Section)', () => {
-    it('should show engineering tab by default', () => {
+    it('should show engineering demo by default', () => {
       render(<Home />)
-      expect(screen.getByText(/implement rate limiting/)).toBeInTheDocument()
+      // Engineering demo should be visible - check for unique Engineering demo element
+      expect(screen.getByText('memexhq active')).toBeInTheDocument()
     })
 
     it('should switch to marketing demo when marketing tab clicked', async () => {
@@ -252,7 +253,8 @@ describe('HomePage', () => {
 
       await userEvent.click(marketingTab)
 
-      expect(screen.getByText(/LinkedIn post/)).toBeInTheDocument()
+      // Marketing demo shows Claude Chat interface
+      expect(screen.getByText('claude.ai/chat')).toBeInTheDocument()
     })
 
     it('should switch to sales demo when sales tab clicked', async () => {
@@ -261,8 +263,8 @@ describe('HomePage', () => {
 
       await userEvent.click(salesTab)
 
-      // Sales demo has "Acme Corp" in the prompt
-      expect(screen.getByText(/prep me for tomorrow/)).toBeInTheDocument()
+      // Sales demo shows ChatGPT interface
+      expect(screen.getByText('chatgpt.com')).toBeInTheDocument()
     })
 
     it('should switch to product demo when product tab clicked', async () => {
@@ -271,7 +273,8 @@ describe('HomePage', () => {
 
       await userEvent.click(productTab)
 
-      expect(screen.getByText(/write the PRD/)).toBeInTheDocument()
+      // Product demo shows Codex interface
+      expect(screen.getByText(/platform.openai.com/)).toBeInTheDocument()
     })
 
     it('should switch to devops demo when devops tab clicked', async () => {
@@ -280,16 +283,18 @@ describe('HomePage', () => {
 
       await userEvent.click(devopsTab)
 
-      expect(screen.getByText(/production go down/)).toBeInTheDocument()
+      // DevOps demo shows GitHub interface
+      expect(screen.getByText(/github.com/)).toBeInTheDocument()
     })
 
-    it('should switch to onboarding demo when onboarding tab clicked', async () => {
+    it('should switch to HR demo when HR tab clicked', async () => {
       render(<Home />)
-      const onboardingTab = screen.getByRole('button', { name: /HR \/ Onboarding/i })
+      const hrTab = screen.getByRole('button', { name: /HR \/ Onboarding/i })
 
-      await userEvent.click(onboardingTab)
+      await userEvent.click(hrTab)
 
-      expect(screen.getByText(/onboarding plan/)).toBeInTheDocument()
+      // HR demo shows CoWork interface
+      expect(screen.getByText('cowork.anthropic.com')).toBeInTheDocument()
     })
 
     it('should apply active class to selected tab', async () => {
@@ -299,6 +304,16 @@ describe('HomePage', () => {
       await userEvent.click(marketingTab)
 
       expect(marketingTab.classList.contains('active')).toBe(true)
+    })
+
+    it('should render all demo tabs', () => {
+      render(<Home />)
+      expect(screen.getByRole('button', { name: /Engineering/i })).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: /Marketing/i })).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: /Sales/i })).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: /Product/i })).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: /DevOps/i })).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: /HR \/ Onboarding/i })).toBeInTheDocument()
     })
   })
 
