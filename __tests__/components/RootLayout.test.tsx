@@ -15,7 +15,11 @@ describe('RootLayout', () => {
 
   describe('Metadata', () => {
     it('should export correct title', () => {
-      expect(metadata.title).toBe('MemexHQ — Your AI finally knows your business.')
+      // Title is now an object with default and template for SEO
+      expect(metadata.title).toEqual({
+        default: 'MemexHQ — Your AI finally knows your business.',
+        template: '%s | MemexHQ',
+      })
     })
 
     it('should export correct description', () => {
