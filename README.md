@@ -47,7 +47,7 @@ Every AI session starts blank. Engineers spend 20+ minutes briefing tools. AI su
 
 ## Status
 
-Open source release coming soon. Sign up at [memexhq.com](https://memexhq.dev) for early access.
+Open source release coming soon. Sign up at [memexhq.dev](https://memexhq.dev) for early access.
 
 SOC 2 Type II in progress · GDPR compliant · SAML SSO · Enterprise SLA available
 
