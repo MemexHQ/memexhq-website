@@ -4,6 +4,8 @@ import { useCallback, useEffect, useRef } from 'react'
 import JSZip from 'jszip'
 import { saveAs } from 'file-saver'
 import '../globals.css'
+import Navigation from '../components/Navigation'
+import Footer from '../components/Footer'
 
 const ASSETS = [
   { svg: '/components/logo-dark.svg', png: '/components/logo-dark.svg', label: 'Logo + wordmark (dark)', hasText: true },
@@ -168,6 +170,7 @@ export default function BrandPage() {
   return (
     <>
       <canvas ref={canvasRef} id="bg-canvas" style={{ position: 'fixed', inset: 0, zIndex: 0, opacity: 0.2, pointerEvents: 'none' }} />
+      <Navigation />
 
       <main style={{ position: 'relative', zIndex: 1, paddingTop: '100px', paddingBottom: '100px' }}>
         <div className="section-inner">
@@ -424,6 +427,7 @@ export default function BrandPage() {
 
         </div>
       </main>
+      <Footer />
     </>
   )
 }
