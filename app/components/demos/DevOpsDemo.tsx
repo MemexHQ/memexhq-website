@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState, useCallback, useRef } from 'react'
+import Image from 'next/image'
 import styles from './demos.module.css'
 
 interface ContextNode {
@@ -153,7 +154,7 @@ export default function DevOpsDemo() {
         </div>
         <div className={styles.ghUi}>
           <div className={styles.repoHeader}>
-            <span className={styles.ghIcon}>⬡</span>
+            <span className={styles.ghIcon}><Image src="/components/GitHub.svg" alt="GitHub" width={18} height={18} className={styles.logoImg} /></span>
             <span className={styles.repoPath}>
               <span className={styles.org}>acme</span>
               <span className={styles.sep}>/</span>
@@ -205,7 +206,7 @@ export default function DevOpsDemo() {
             </div>
             <div className={styles.copilotPanel}>
               <div className={styles.copilotHdr}>
-                <div className={styles.copilotLogo}>✦</div>
+                <div className={styles.copilotLogo}><Image src="/components/GitHub.svg" alt="GitHub Copilot" width={12} height={12} className={styles.logoImg} /></div>
                 <span className={styles.copilotTitle}>Copilot + memexhq</span>
               </div>
               <div className={styles.copilotMsgs} ref={messagesRef}>

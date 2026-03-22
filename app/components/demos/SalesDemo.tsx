@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState, useCallback, useRef } from 'react'
+import Image from 'next/image'
 import styles from './demos.module.css'
 
 interface ContextNode {
@@ -186,7 +187,7 @@ export default function SalesDemo() {
         <div className={styles.chatUi}>
           <div className={styles.gptSidebar}>
             <div className={styles.sbLogo}>
-              <div className={styles.gptIcon}>G</div>
+              <div className={styles.gptIcon}><Image src="/components/ChatGPT.svg" alt="ChatGPT" width={14} height={14} /></div>
               ChatGPT
             </div>
             <button className={styles.sbNew}>✏ New chat</button>
@@ -248,7 +249,7 @@ export default function SalesDemo() {
               {/* Assistant response - Email card */}
               {showEmailCard && (
                 <div className={styles.msgAssistant}>
-                  <div className={styles.avatar} style={{ background: '#10a37f', color: '#fff', fontWeight: 700 }}>G</div>
+                  <div className={styles.avatar} style={{ background: '#00A67E' }}><Image src="/components/ChatGPT.svg" alt="ChatGPT" width={16} height={16} className={styles.logoImg} /></div>
                   <div className={styles.bubbleAssistant}>
                     <div className={`${styles.emailCard} ${styles.show}`}>
                       <div className={styles.emailHdr}>

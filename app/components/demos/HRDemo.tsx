@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState, useCallback, useRef } from 'react'
+import Image from 'next/image'
 import styles from './demos.module.css'
 
 interface ContextNode {
@@ -171,7 +172,7 @@ export default function HRDemo() {
         <div className={styles.cwUi}>
           <div className={styles.cwSidebar}>
             <div className={styles.cwLogo}>
-              <div className={styles.cwIcon}>C</div>
+              <div className={styles.cwIcon}><Image src="/components/Claude.svg" alt="Claude" width={14} height={14} className={styles.logoImg} /></div>
               CoWork
             </div>
             <div className={styles.cwSection}>Workspace</div>

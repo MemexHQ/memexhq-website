@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState, useCallback, useRef } from 'react'
+import Image from 'next/image'
 import styles from './demos.module.css'
 
 interface ContextNode {
@@ -231,7 +232,7 @@ export default function MarketingDemo() {
               {/* Assistant response - LinkedIn post */}
               {showPostCard && (
                 <div className={styles.msgAssistant}>
-                  <div className={styles.avatar}>✦</div>
+                  <div className={styles.avatar} style={{ background: '#F4F3EE' }}><Image src="/components/Claude.svg" alt="Claude" width={16} height={16} className={styles.logoImg} /></div>
                   <div className={styles.bubbleAssistant}>
                     <div className={`${styles.postCard} ${styles.show}`}>
                       <div className={styles.postHeader}>

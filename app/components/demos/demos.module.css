@@ -329,7 +329,7 @@
 }
 
 .sidebarLogo span {
-  color: #d97706;
+  color: #da7756;
 }
 
 .newChat {
@@ -707,7 +707,7 @@
 .gptIcon {
   width: 22px;
   height: 22px;
-  background: #10a37f;
+  background: #00A67E;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -1538,7 +1538,7 @@
 .cwIcon {
   width: 22px;
   height: 22px;
-  background: #d97706;
+  background: #F4F3EE;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -1676,9 +1676,9 @@
   font-size: 10.5px;
   padding: 2px 9px;
   border-radius: 20px;
-  background: rgba(217,119,6,0.15);
-  color: #d97706;
-  border: 0.5px solid rgba(217,119,6,0.3);
+  background: rgba(218,119,86,0.15);
+  color: #da7756;
+  border: 0.5px solid rgba(218,119,86,0.3);
 }
 
 .docBody {

@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState, useCallback, useRef } from 'react'
+import Image from 'next/image'
 import styles from './demos.module.css'
 
 interface ContextNode {
@@ -204,7 +205,7 @@ export default function ProductDemo() {
         <div className={styles.codexUi}>
           <div className={styles.codexSidebar}>
             <div className={styles.cxLogo}>
-              <div className={styles.cxIcon}>⬡</div>
+              <div className={styles.cxIcon}><Image src="/components/OpenAI.svg" alt="OpenAI" width={14} height={14} className={styles.logoImg} /></div>
               Codex
             </div>
             <div className={styles.cxSection}>Agents</div>
