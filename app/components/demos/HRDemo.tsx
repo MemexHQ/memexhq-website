@@ -159,8 +159,8 @@ export default function HRDemo() {
 
   return (
     <div className={styles.demoWrap}>
-      <div className={styles.browser} style={{ background: '#1f1e1a' }}>
-        <div className={styles.browserBar} style={{ background: '#262520' }}>
+      <div className={styles.browser} style={{ background: '#0d1117' }}>
+        <div className={styles.browserBar} style={{ background: '#111820' }}>
           <div className={styles.dots}>
             <div className={`${styles.dot} ${styles.dr}`}></div>
             <div className={`${styles.dot} ${styles.dy}`}></div>
