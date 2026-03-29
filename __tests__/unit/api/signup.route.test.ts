@@ -210,6 +210,26 @@ describe('POST /api/signup', () => {
     })
   })
 
+  describe('No Supabase configuration', () => {
+    it('should return 200 without calling Supabase when env vars are missing', async () => {
+      vi.unstubAllEnvs()
+      vi.resetModules()
+      const { createClient } = await import('@supabase/supabase-js')
+      const { POST: POSTNoEnv } = await import('@/app/api/signup/route')
+      const request = createRequest({ email: 'test@example.com', company: 'Test Corp' })
+      const response = await POSTNoEnv(request)
+      const data = await response.json()
+
+      expect(response.status).toBe(200)
+      expect(data.success).toBe(true)
+      expect(createClient).not.toHaveBeenCalled()
+
+      // Restore env vars for subsequent tests
+      vi.stubEnv('NEXT_PUBLIC_SUPABASE_URL', 'https://test.supabase.co')
+      vi.stubEnv('SUPABASE_ANON_KEY', 'test-anon-key')
+    })
+  })
+
   describe('Error Handling', () => {
     it('should return 500 on Supabase connection failure', async () => {
       mockInsert.mockResolvedValue({
